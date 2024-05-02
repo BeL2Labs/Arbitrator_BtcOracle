@@ -1,9 +1,29 @@
 // SPDX-License-Identifier: CC-BY-NC-4.0
+pragma solidity ^0.8.20;
 /**
  * @title IArbitrator
  * @dev Interface for the arbitration contract, defining functions for arbitrator registration, submitting arbitration results, requesting arbitration, and more.
  */
 interface IArbitrator {
+
+    enum ArbitrationStatus { Pending, Completed }
+    struct ArbitratorInfo {
+        address arbitrator;
+        uint256 commitPeriod;
+        uint256 registeredAt;
+        bytes btcPublicKey;
+        address stakedToken;
+        uint256 stakedAmount;
+    }
+
+    struct ArbitrationData {
+        bytes32 requestID;
+        uint256 requestTime;
+        ArbitrationStatus status;
+        bytes toSignBtcTx;
+        bytes signedBtcTx;
+    }
+
     /**
      * @dev Registers a new arbitrator.
      * @param _commitPeriod The commitment period of the arbitrator, in seconds.
@@ -11,13 +31,18 @@ interface IArbitrator {
      * @param _token The address of the ERC20 token used for staking.
      * @param _amount The amount of tokens to be staked.
      */
-    function registerArbitrator(uint256 _commitPeriod, bytes32 _btcPublicKey, address _token, uint256 _amount) external;
+    function registerArbitrator(uint256 _commitPeriod, bytes calldata _btcPublicKey, address _token, uint256 _amount) external;
 
     /**
+    * @dev Get the first registerArbitrator public key
+     */
+    function getArbitratorPublicKey() external view returns(bytes memory);
+    /**
      * @dev Submits an arbitration result.
+     * @param _queryId The unique identifier of the arbitration request.
      * @param _signedBtcTx The signed Bitcoin transaction representing the arbitration result.
      */
-    function submitArbitrationResult(bytes calldata _signedBtcTx) external;
+    function submitArbitrationResult(bytes32 _queryId, bytes calldata _signedBtcTx) external;
 
     /**
      * @dev Allows an arbitrator to exit and reclaim their staked tokens after their commitment period ends.
@@ -59,16 +84,10 @@ interface IArbitrator {
     function setTokenWhitelist(address _token, bool _isWhitelisted) external;
 
     /**
-     * @dev Sets the minimum stake amount required for arbitrators.
-     * @param _amount The minimum stake amount, in USD.
+     * @dev Sets the address of the AssetOracle price oracle for fetching token prices.
+     * @param _oracle The address of the AssetOracle price oracle.
      */
-    function setMinStakeAmount(uint256 _amount) external;
-
-    /**
-     * @dev Sets the address of the Chainlink price oracle for fetching token prices.
-     * @param _oracle The address of the Chainlink price oracle.
-     */
-    function setChainlinkOracle(address _oracle) external;
+    function setAssetOracle(address _oracle) external;
 
     /**
      * @dev Retrieves the information of an arbitrator.
@@ -92,7 +111,7 @@ interface IArbitrator {
      * @param stakedToken The address of the token staked by the arbitrator.
      * @param stakedAmount The amount of tokens staked by the arbitrator.
      */
-    event ArbitratorRegistered(address indexed arbitrator, uint256 commitPeriod, bytes32 btcPublicKey, address stakedToken, uint256 stakedAmount);
+    event ArbitratorRegistered(address indexed arbitrator, uint256 commitPeriod, bytes btcPublicKey, address stakedToken, uint256 stakedAmount);
 
     /**
      * @dev Emitted when an arbitration result is submitted.
@@ -126,14 +145,25 @@ interface IArbitrator {
      * @dev Emitted when the minimum stake amount is updated.
      * @param newAmount The new minimum stake amount.
      */
-    event MinStakeAmountUpdated(uint256 newAmount);
+    event MinStakeAmountUpdated(uint256 indexed newAmount);
 
     /**
      * @dev Emitted when the whitelist status of an arbitrator is updated.
      * @param arbitrator The address of the arbitrator.
      * @param status The new whitelist status of the arbitrator.
      */
-    event WhitelistStatusUpdated(address arbitrator, bool status);
+    event WhitelistStatusUpdated(address indexed arbitrator, bool indexed status);
+
+    event ContractWhiteListUpdate(address indexed contractAddress, bool indexed status);
+
+    event SetArbitrationRequestDuration(uint256 indexed duration);
+
+    event SetTokenWhitelist(address indexed _token, bool indexed _isWhitelisted);
+
+    event SetAssetOracle(address indexed oracle);
+
+    event SetRegisterWhiteList(address indexed whiteList);
+
 
     /**
      * @dev Sets the minimum stake amount required for arbitrators.
@@ -141,10 +171,5 @@ interface IArbitrator {
      */
     function setMinStakeAmount(uint256 newAmount) external;
 
-    /**
-     * @dev Updates the whitelist status of an arbitrator.
-     * @param arbitrator The address of the arbitrator.
-     * @param status The new whitelist status of the arbitrator.
-     */
-    function updateWhitelistStatus(address arbitrator, bool status) external;
+    function setRegisterWhiteList(address whiteList) external;
 }
