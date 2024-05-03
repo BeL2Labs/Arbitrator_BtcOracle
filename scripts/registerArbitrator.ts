@@ -22,7 +22,7 @@ async function main() {
     amount = amount.mul(10);
     let tx = await contract.registerArbitrator(_commitPeriod, btcPublicKey, usdt, amount);
     console.log("register arbitrator =", tx.hash);
-    let receipt = tx.wait();
+    let receipt = await  tx.wait();
     console.log("receipt=", receipt);
 }
 

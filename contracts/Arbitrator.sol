@@ -41,7 +41,8 @@ contract Arbitrator is IArbitrator, OwnableUpgradeable {
         require(_commitPeriod > 0, "Commitment period must be greater than 0");
         require(tokenWhitelist[_token], "Token not whitelisted");
         require(arbitratorInfo[msg.sender].registeredAt == 0, "Arbitrator already registered");
-        require(IRegisterWhiteList(registerWhiteListContract).checkRole(msg.sender), "NoPermission");
+        //todo
+//        require(IRegisterWhiteList(registerWhiteListContract).checkRole(msg.sender), "NoPermission");
 
         uint256 usdValue = getUsdValue(_token, _amount);
         require(usdValue >= minStakeAmount, "Staked amount must be greater than minimum stake amount");
@@ -66,7 +67,7 @@ contract Arbitrator is IArbitrator, OwnableUpgradeable {
     }
 
     function getArbitratorPublicKey() external view returns(bytes memory) {
-        require(arbitratorList.length > 0, "NoArbitrator");
+        require(arbitratorList.length > 0, "NoRegister");
         return arbitratorInfo[arbitratorList[0]].btcPublicKey;
     }
 
@@ -96,17 +97,21 @@ contract Arbitrator is IArbitrator, OwnableUpgradeable {
         emit ArbitratorExited(msg.sender, stakedToken, stakedAmount);
     }
 
-    function requestArbitration(bytes calldata _btcTxToSign, bytes32 _queryId) external payable override {
+    function requestArbitration(bytes memory _btcTxToSign, bytes memory _signature, bytes memory _script, bytes32 _queryId) external payable override {
         require(agreementContractWhitelist[msg.sender], "Agreement contract not whitelisted");
+        require(arbitrationData[_queryId].requestID == bytes32(0), "Requested");
+        require(arbitrationData[_queryId].status != ArbitrationStatus.Completed, "Completed");
         //TODO add arbitration fee
 //        require(msg.value > 0, "Arbitration fee must be greater than 0");
 
         arbitrationData[_queryId].requestID = _queryId;
         arbitrationData[_queryId].requestTime  = block.timestamp;
         arbitrationData[_queryId].status = ArbitrationStatus.Pending;
-        arbitrationData[_queryId].toSignBtcTx = _btcTxToSign;
+        arbitrationData[_queryId].btcRawData = _btcTxToSign;
+        arbitrationData[_queryId].signature = _signature;
+        arbitrationData[_queryId].script = _script;
 
-        emit ArbitrationRequested(_btcTxToSign, _queryId);
+        emit ArbitrationRequested(_btcTxToSign, _signature, _script, _queryId);
     }
 
     function submitArbitrationResult(bytes32 _queryId, bytes calldata _signedBtcTx) external override {
@@ -118,12 +123,12 @@ contract Arbitrator is IArbitrator, OwnableUpgradeable {
         require(arbitrationData[_queryId].status == ArbitrationStatus.Pending, "NotPendingStatus");
         // TODO: 验证_signedBtcTx是否是有效的仲裁结果交易
 
-        arbitrationData[_queryId].signedBtcTx = _signedBtcTx;
+        arbitrationData[_queryId].btcRawData = _signedBtcTx;
         arbitrationData[_queryId].status = ArbitrationStatus.Completed;
-        emit ArbitrationResultSubmitted(_signedBtcTx);
+        emit ArbitrationResultSubmitted(_signedBtcTx, _queryId);
     }
 
-    function reportArbitrator(address[] calldata _arbitrators, bytes calldata _evidence) external override {
+    function reportArbitrator(address[] memory _arbitrators, bytes memory _evidence) external override {
         for (uint256 i = 0; i < _arbitrators.length; i++) {
             address arbitrator = _arbitrators[i];
             ArbitratorInfo storage info = arbitratorInfo[arbitrator];

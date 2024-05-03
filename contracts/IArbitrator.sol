@@ -20,8 +20,9 @@ interface IArbitrator {
         bytes32 requestID;
         uint256 requestTime;
         ArbitrationStatus status;
-        bytes toSignBtcTx;
-        bytes signedBtcTx;
+        bytes btcRawData;
+        bytes signature;
+        bytes script;
     }
 
     /**
@@ -31,7 +32,7 @@ interface IArbitrator {
      * @param _token The address of the ERC20 token used for staking.
      * @param _amount The amount of tokens to be staked.
      */
-    function registerArbitrator(uint256 _commitPeriod, bytes calldata _btcPublicKey, address _token, uint256 _amount) external;
+    function registerArbitrator(uint256 _commitPeriod, bytes memory _btcPublicKey, address _token, uint256 _amount) external;
 
     /**
     * @dev Get the first registerArbitrator public key
@@ -42,7 +43,7 @@ interface IArbitrator {
      * @param _queryId The unique identifier of the arbitration request.
      * @param _signedBtcTx The signed Bitcoin transaction representing the arbitration result.
      */
-    function submitArbitrationResult(bytes32 _queryId, bytes calldata _signedBtcTx) external;
+    function submitArbitrationResult(bytes32 _queryId, bytes memory _signedBtcTx) external;
 
     /**
      * @dev Allows an arbitrator to exit and reclaim their staked tokens after their commitment period ends.
@@ -54,14 +55,14 @@ interface IArbitrator {
      * @param _btcTxToSign The Bitcoin transaction to be signed by the arbitrator.
      * @param _queryId The unique identifier of the arbitration request.
      */
-    function requestArbitration(bytes calldata _btcTxToSign, bytes32 _queryId) external payable;
+    function requestArbitration(bytes memory _btcTxToSign, bytes memory _signature, bytes memory _script, bytes32 _queryId) external payable;
 
     /**
      * @dev Reports misbehaving arbitrators.
      * @param _arbitrators The list of arbitrator addresses to be reported.
      * @param _evidence The evidence supporting the report.
      */
-    function reportArbitrator(address[] calldata _arbitrators, bytes calldata _evidence) external;
+    function reportArbitrator(address[] memory _arbitrators, bytes memory _evidence) external;
 
     /**
      * @dev Sets the whitelist status of an agreement contract. Only whitelisted contracts can request arbitration.
@@ -117,7 +118,7 @@ interface IArbitrator {
      * @dev Emitted when an arbitration result is submitted.
      * @param signedBtcTx The signed Bitcoin transaction representing the arbitration result.
      */
-    event ArbitrationResultSubmitted(bytes signedBtcTx);
+    event ArbitrationResultSubmitted(bytes signedBtcTx, bytes32 queryId);
 
     /**
      * @dev Emitted when an arbitrator exits and reclaims their staked tokens.
@@ -132,7 +133,7 @@ interface IArbitrator {
      * @param btcTxToSign The Bitcoin transaction to be signed by the arbitrator.
      * @param queryId The unique identifier of the arbitration request.
      */
-    event ArbitrationRequested(bytes btcTxToSign, bytes32 queryId);
+    event ArbitrationRequested(bytes btcTxToSign, bytes signature, bytes script, bytes32 queryId);
 
     /**
      * @dev Emitted when arbitrators are reported for misbehavior.

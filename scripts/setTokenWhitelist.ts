@@ -17,7 +17,7 @@ async function main() {
 
     let tx = await contract.setTokenWhitelist(usdt, true);
     console.log("setTokenWhitelist =", tx.hash);
-    let receipt = tx.wait();
+    let receipt = await tx.wait();
     console.log("receipt=", receipt);
 }
 

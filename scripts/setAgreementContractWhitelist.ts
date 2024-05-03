@@ -14,7 +14,7 @@ async function main() {
     const contractFactory = await ethers.getContractFactory('Arbitrator',account)
     let contract  = await contractFactory.connect(account).attach(contractAddress);
 
-    let tx = await contract.setAgreementContractWhitelist("0x6243007eB61b888f9295496b1A1f2E601E47Bcab", true);
+    let tx = await contract.setAgreementContractWhitelist("0x20c14ce780cDa71A0A030C9Ae731B38Cf87f44F4", true);
     let receipt = await tx.wait();
     console.log("receipt=", receipt.logs);
 }
