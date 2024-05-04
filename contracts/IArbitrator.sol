@@ -5,8 +5,13 @@ pragma solidity ^0.8.20;
  * @dev Interface for the arbitration contract, defining functions for arbitrator registration, submitting arbitration results, requesting arbitration, and more.
  */
 interface IArbitrator {
-
     enum ArbitrationStatus { Pending, Completed }
+    struct MerkleProofData {
+        bytes32[] proof;
+        bytes32 root;
+        bytes32 leaf;
+        bool[] flags;
+    }
     struct ArbitratorInfo {
         address arbitrator;
         uint256 commitPeriod;
@@ -20,9 +25,13 @@ interface IArbitrator {
         bytes32 requestID;
         uint256 requestTime;
         ArbitrationStatus status;
-        bytes btcRawData;
+        bytes btcTxToSign;
+        bytes btcTxSigned;
         bytes signature;
         bytes script;
+        MerkleProofData merkleProof;
+        bytes[] utxos;
+        uint32 blockHeight;
     }
 
     /**
@@ -42,8 +51,16 @@ interface IArbitrator {
      * @dev Submits an arbitration result.
      * @param _queryId The unique identifier of the arbitration request.
      * @param _signedBtcTx The signed Bitcoin transaction representing the arbitration result.
+     * @param utxos The UTXOs.
+     * @param blockHeight The Bitcoin block height.
+     * @param merkleProof The Merkle proof.
      */
-    function submitArbitrationResult(bytes32 _queryId, bytes memory _signedBtcTx) external;
+    function submitArbitrationResult(
+        bytes32 _queryId,
+        bytes memory _signedBtcTx,
+        bytes[] memory utxos,
+        uint32 blockHeight,
+        MerkleProofData calldata merkleProof) external;
 
     /**
      * @dev Allows an arbitrator to exit and reclaim their staked tokens after their commitment period ends.

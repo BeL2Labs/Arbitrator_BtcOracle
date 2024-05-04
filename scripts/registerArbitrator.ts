@@ -14,7 +14,7 @@ async function main() {
     const contractFactory = await ethers.getContractFactory('Arbitrator',account)
     let contract  = await contractFactory.connect(account).attach(contractAddress);
 //uint256 _commitPeriod, bytes calldata _btcPublicKey, address _token, uint256 _amount
-    let _commitPeriod = 60 * 5;
+    let _commitPeriod = 30 * 3600 * 24;
     let btcPublicKey = "0x0200493eb975eedf5d5d2f7f5458e790e8264576ec137df06c8f3f90c91b0a6f78";
     let usdt = "0x0daddd286487f3a03Ea9A1b693585fD46cdCcF9F";
 

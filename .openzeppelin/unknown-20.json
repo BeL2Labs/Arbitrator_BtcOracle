@@ -1,20 +1,20 @@
 {
   "manifestVersion": "3.2",
   "admin": {
-    "address": "0xBC00C048B88EE9907617bDCe03E1Fe1a3F8445e4",
-    "txHash": "0x264cd8737052eb8e726c30801473af9f0f0b73a172bd84112bef41a296b0834c"
+    "address": "0x117d96AfD7687cab77AC5fc6f56841508887286a",
+    "txHash": "0xd6fd23e7361f7783f7d6d98f91b6c9d7a877d226145fb4a33f319a7b9e991e5b"
   },
   "proxies": [
     {
-      "address": "0x45679eD4f33Ed1Edb6A4E8075b4300C4169bBf1c",
-      "txHash": "0x6b254413e225d2171c9e5ab19c7f2197e3bd91e74a9718335a25759240b2044e",
+      "address": "0x32D45fa21B6efe0404911B0FE5aa3243D120Bc62",
+      "txHash": "0x1c4629ff1ee3c5e22215466f77bbc72c5385aaa4ce87de63596d3885d0fc24c8",
       "kind": "transparent"
     }
   ],
   "impls": {
-    "e8748d65126b58b3e0231bab874b5cb6bb1b3f63b5a84ba003100cc699c4f9e9": {
-      "address": "0x105c2Abf592C2cB6A1CE52C406f150B0EF7F08dF",
-      "txHash": "0xa95cc0d4a4170afb58b9dba4b5a94007b91b7267c27053e517bdde6d1bb10ecd",
+    "9d70bfb859993ca399f4c9dc25ccbaf8bf634605a0d3644fa856925e79fa309c": {
+      "address": "0x4060eb38749ED09628F3b08D8afcd659137204B7",
+      "txHash": "0x6ad66e668493128c77a73ab474faee6bd88b292cb6d7e69d8699eb5ff92b61f0",
       "layout": {
         "solcVersion": "0.8.20",
         "storage": [
@@ -86,7 +86,7 @@
             "label": "arbitrationData",
             "offset": 0,
             "slot": "8",
-            "type": "t_mapping(t_bytes32,t_struct(ArbitrationData)4308_storage)",
+            "type": "t_mapping(t_bytes32,t_struct(ArbitrationData)4310_storage)",
             "contract": "Arbitrator",
             "src": "contracts/Arbitrator.sol:25"
           }
@@ -128,11 +128,11 @@
             "label": "mapping(address => struct IArbitrator.ArbitratorInfo)",
             "numberOfBytes": "32"
           },
-          "t_mapping(t_bytes32,t_struct(ArbitrationData)4308_storage)": {
+          "t_mapping(t_bytes32,t_struct(ArbitrationData)4310_storage)": {
             "label": "mapping(bytes32 => struct IArbitrator.ArbitrationData)",
             "numberOfBytes": "32"
           },
-          "t_struct(ArbitrationData)4308_storage": {
+          "t_struct(ArbitrationData)4310_storage": {
             "label": "struct IArbitrator.ArbitrationData",
             "members": [
               {
@@ -154,25 +154,31 @@
                 "slot": "2"
               },
               {
-                "label": "btcRawData",
+                "label": "btcTxToSign",
                 "type": "t_bytes_storage",
                 "offset": 0,
                 "slot": "3"
               },
               {
-                "label": "signature",
+                "label": "btcTxSigned",
                 "type": "t_bytes_storage",
                 "offset": 0,
                 "slot": "4"
               },
               {
-                "label": "script",
+                "label": "signature",
                 "type": "t_bytes_storage",
                 "offset": 0,
                 "slot": "5"
+              },
+              {
+                "label": "script",
+                "type": "t_bytes_storage",
+                "offset": 0,
+                "slot": "6"
               }
             ],
-            "numberOfBytes": "192"
+            "numberOfBytes": "224"
           },
           "t_struct(ArbitratorInfo)4294_storage": {
             "label": "struct IArbitrator.ArbitratorInfo",
@@ -250,9 +256,9 @@
         }
       }
     },
-    "b551c768149a92cfbd81b9fed828cef70564f48c18c14fb13f17819e7e1cf483": {
-      "address": "0xb96330483f8b49972760e3294b49325F5Efc1ff3",
-      "txHash": "0x8a0cb770da4119c29c7fcb1cf788ba304747aff5971429957e59167c2a19b38e",
+    "3502905ab4a4f27db7c4f2360152ccc70c7c9ccdf1234e5c785b65cabae9588b": {
+      "address": "0x44fE7279cAb50Eb70A4e277b97a936cc97B6Ce67",
+      "txHash": "0x6fab3729d8d9879fd117f4415d9a815e9566466978644946903c2a07cf3aba9c",
       "layout": {
         "solcVersion": "0.8.20",
         "storage": [
@@ -308,7 +314,7 @@
             "label": "arbitratorInfo",
             "offset": 0,
             "slot": "6",
-            "type": "t_mapping(t_address,t_struct(ArbitratorInfo)4294_storage)",
+            "type": "t_mapping(t_address,t_struct(ArbitratorInfo)4258_storage)",
             "contract": "Arbitrator",
             "src": "contracts/Arbitrator.sol:23"
           },
@@ -324,7 +330,7 @@
             "label": "arbitrationData",
             "offset": 0,
             "slot": "8",
-            "type": "t_mapping(t_bytes32,t_struct(ArbitrationData)4308_storage)",
+            "type": "t_mapping(t_bytes32,t_struct(ArbitrationData)4274_storage)",
             "contract": "Arbitrator",
             "src": "contracts/Arbitrator.sol:25"
           }
@@ -350,7 +356,7 @@
             "label": "bytes",
             "numberOfBytes": "32"
           },
-          "t_enum(ArbitrationStatus)4281": {
+          "t_enum(ArbitrationStatus)4234": {
             "label": "enum IArbitrator.ArbitrationStatus",
             "members": [
               "Pending",
@@ -362,15 +368,15 @@
             "label": "mapping(address => bool)",
             "numberOfBytes": "32"
           },
-          "t_mapping(t_address,t_struct(ArbitratorInfo)4294_storage)": {
+          "t_mapping(t_address,t_struct(ArbitratorInfo)4258_storage)": {
             "label": "mapping(address => struct IArbitrator.ArbitratorInfo)",
             "numberOfBytes": "32"
           },
-          "t_mapping(t_bytes32,t_struct(ArbitrationData)4308_storage)": {
+          "t_mapping(t_bytes32,t_struct(ArbitrationData)4274_storage)": {
             "label": "mapping(bytes32 => struct IArbitrator.ArbitrationData)",
             "numberOfBytes": "32"
           },
-          "t_struct(ArbitrationData)4308_storage": {
+          "t_struct(ArbitrationData)4274_storage": {
             "label": "struct IArbitrator.ArbitrationData",
             "members": [
               {
@@ -387,32 +393,38 @@
               },
               {
                 "label": "status",
-                "type": "t_enum(ArbitrationStatus)4281",
+                "type": "t_enum(ArbitrationStatus)4234",
                 "offset": 0,
                 "slot": "2"
               },
               {
-                "label": "btcRawData",
+                "label": "btcTxToSign",
                 "type": "t_bytes_storage",
                 "offset": 0,
                 "slot": "3"
               },
               {
-                "label": "signature",
+                "label": "btcTxSigned",
                 "type": "t_bytes_storage",
                 "offset": 0,
                 "slot": "4"
               },
               {
-                "label": "script",
+                "label": "signature",
                 "type": "t_bytes_storage",
                 "offset": 0,
                 "slot": "5"
+              },
+              {
+                "label": "script",
+                "type": "t_bytes_storage",
+                "offset": 0,
+                "slot": "6"
               }
             ],
-            "numberOfBytes": "192"
+            "numberOfBytes": "224"
           },
-          "t_struct(ArbitratorInfo)4294_storage": {
+          "t_struct(ArbitratorInfo)4258_storage": {
             "label": "struct IArbitrator.ArbitratorInfo",
             "members": [
               {
@@ -488,9 +500,9 @@
         }
       }
     },
-    "57635db9d8bb0a05ab875ceaf2bb90d78740542d5eccb5b1139c8ac5b0a4d090": {
-      "address": "0xC2d0e31266e24885723F23A1158594D559aa6333",
-      "txHash": "0xb3014cebf2a1f183a98bb421a1368fa400a610519a45a2b8770d508545cbb96e",
+    "773f34e0c7c3b576612df1b4a69897cd71577af128c5535a05fbc909adae72a9": {
+      "address": "0x9e2Cb6913d28a99720f22835a1BCC69341E96448",
+      "txHash": "0xb93b0ddf94caae381d545f42af1c235dd93167566e2f404128477c50c530d092",
       "layout": {
         "solcVersion": "0.8.20",
         "storage": [
@@ -546,7 +558,7 @@
             "label": "arbitratorInfo",
             "offset": 0,
             "slot": "6",
-            "type": "t_mapping(t_address,t_struct(ArbitratorInfo)4294_storage)",
+            "type": "t_mapping(t_address,t_struct(ArbitratorInfo)4349_storage)",
             "contract": "Arbitrator",
             "src": "contracts/Arbitrator.sol:23"
           },
@@ -562,7 +574,7 @@
             "label": "arbitrationData",
             "offset": 0,
             "slot": "8",
-            "type": "t_mapping(t_bytes32,t_struct(ArbitrationData)4308_storage)",
+            "type": "t_mapping(t_bytes32,t_struct(ArbitrationData)4368_storage)",
             "contract": "Arbitrator",
             "src": "contracts/Arbitrator.sol:25"
           }
@@ -574,6 +586,14 @@
           },
           "t_array(t_address)dyn_storage": {
             "label": "address[]",
+            "numberOfBytes": "32"
+          },
+          "t_array(t_bool)dyn_storage": {
+            "label": "bool[]",
+            "numberOfBytes": "32"
+          },
+          "t_array(t_bytes32)dyn_storage": {
+            "label": "bytes32[]",
             "numberOfBytes": "32"
           },
           "t_bool": {
@@ -588,7 +608,7 @@
             "label": "bytes",
             "numberOfBytes": "32"
           },
-          "t_enum(ArbitrationStatus)4281": {
+          "t_enum(ArbitrationStatus)4325": {
             "label": "enum IArbitrator.ArbitrationStatus",
             "members": [
               "Pending",
@@ -600,15 +620,15 @@
             "label": "mapping(address => bool)",
             "numberOfBytes": "32"
           },
-          "t_mapping(t_address,t_struct(ArbitratorInfo)4294_storage)": {
+          "t_mapping(t_address,t_struct(ArbitratorInfo)4349_storage)": {
             "label": "mapping(address => struct IArbitrator.ArbitratorInfo)",
             "numberOfBytes": "32"
           },
-          "t_mapping(t_bytes32,t_struct(ArbitrationData)4308_storage)": {
+          "t_mapping(t_bytes32,t_struct(ArbitrationData)4368_storage)": {
             "label": "mapping(bytes32 => struct IArbitrator.ArbitrationData)",
             "numberOfBytes": "32"
           },
-          "t_struct(ArbitrationData)4308_storage": {
+          "t_struct(ArbitrationData)4368_storage": {
             "label": "struct IArbitrator.ArbitrationData",
             "members": [
               {
@@ -625,32 +645,44 @@
               },
               {
                 "label": "status",
-                "type": "t_enum(ArbitrationStatus)4281",
+                "type": "t_enum(ArbitrationStatus)4325",
                 "offset": 0,
                 "slot": "2"
               },
               {
-                "label": "btcRawData",
+                "label": "btcTxToSign",
                 "type": "t_bytes_storage",
                 "offset": 0,
                 "slot": "3"
               },
               {
-                "label": "signature",
+                "label": "btcTxSigned",
                 "type": "t_bytes_storage",
                 "offset": 0,
                 "slot": "4"
               },
               {
-                "label": "script",
+                "label": "signature",
                 "type": "t_bytes_storage",
                 "offset": 0,
                 "slot": "5"
+              },
+              {
+                "label": "script",
+                "type": "t_bytes_storage",
+                "offset": 0,
+                "slot": "6"
+              },
+              {
+                "label": "merkleProof",
+                "type": "t_struct(MerkleProofData)4336_storage",
+                "offset": 0,
+                "slot": "7"
               }
             ],
-            "numberOfBytes": "192"
+            "numberOfBytes": "352"
           },
-          "t_struct(ArbitratorInfo)4294_storage": {
+          "t_struct(ArbitratorInfo)4349_storage": {
             "label": "struct IArbitrator.ArbitratorInfo",
             "members": [
               {
@@ -691,6 +723,36 @@
               }
             ],
             "numberOfBytes": "192"
+          },
+          "t_struct(MerkleProofData)4336_storage": {
+            "label": "struct IArbitrator.MerkleProofData",
+            "members": [
+              {
+                "label": "proof",
+                "type": "t_array(t_bytes32)dyn_storage",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "root",
+                "type": "t_bytes32",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "leaf",
+                "type": "t_bytes32",
+                "offset": 0,
+                "slot": "2"
+              },
+              {
+                "label": "flags",
+                "type": "t_array(t_bool)dyn_storage",
+                "offset": 0,
+                "slot": "3"
+              }
+            ],
+            "numberOfBytes": "128"
           },
           "t_uint256": {
             "label": "uint256",
@@ -726,9 +788,9 @@
         }
       }
     },
-    "5ca38720b866e68b7a2ffdfd58bb0fa9f76b8440263fe4ec625aae77267612c2": {
-      "address": "0x4E7491530db979484E7eDB3cc6d97386D8894f76",
-      "txHash": "0xc3115924d53883905481bf6171b86f5f8b8e0a69ce1053687702d5a06ce5417a",
+    "cf3a6368d2eed5d2240f352a89edfcc6f0248364f6b479734f48462de7384323": {
+      "address": "0x97C0Ba3c27840A809ce3f4bBB7AbA45A9Dd9CD05",
+      "txHash": "0x4caf20a97ebb30251cfb4d9687dc1d75141c745da08a7b66f6951ae3b29dc83a",
       "layout": {
         "solcVersion": "0.8.20",
         "storage": [
@@ -784,7 +846,7 @@
             "label": "arbitratorInfo",
             "offset": 0,
             "slot": "6",
-            "type": "t_mapping(t_address,t_struct(ArbitratorInfo)4253_storage)",
+            "type": "t_mapping(t_address,t_struct(ArbitratorInfo)4363_storage)",
             "contract": "Arbitrator",
             "src": "contracts/Arbitrator.sol:23"
           },
@@ -800,7 +862,7 @@
             "label": "arbitrationData",
             "offset": 0,
             "slot": "8",
-            "type": "t_mapping(t_bytes32,t_struct(ArbitrationData)4267_storage)",
+            "type": "t_mapping(t_bytes32,t_struct(ArbitrationData)4387_storage)",
             "contract": "Arbitrator",
             "src": "contracts/Arbitrator.sol:25"
           }
@@ -812,6 +874,18 @@
           },
           "t_array(t_address)dyn_storage": {
             "label": "address[]",
+            "numberOfBytes": "32"
+          },
+          "t_array(t_bool)dyn_storage": {
+            "label": "bool[]",
+            "numberOfBytes": "32"
+          },
+          "t_array(t_bytes32)dyn_storage": {
+            "label": "bytes32[]",
+            "numberOfBytes": "32"
+          },
+          "t_array(t_bytes_storage)dyn_storage": {
+            "label": "bytes[]",
             "numberOfBytes": "32"
           },
           "t_bool": {
@@ -826,7 +900,7 @@
             "label": "bytes",
             "numberOfBytes": "32"
           },
-          "t_enum(ArbitrationStatus)4240": {
+          "t_enum(ArbitrationStatus)4339": {
             "label": "enum IArbitrator.ArbitrationStatus",
             "members": [
               "Pending",
@@ -838,15 +912,15 @@
             "label": "mapping(address => bool)",
             "numberOfBytes": "32"
           },
-          "t_mapping(t_address,t_struct(ArbitratorInfo)4253_storage)": {
+          "t_mapping(t_address,t_struct(ArbitratorInfo)4363_storage)": {
             "label": "mapping(address => struct IArbitrator.ArbitratorInfo)",
             "numberOfBytes": "32"
           },
-          "t_mapping(t_bytes32,t_struct(ArbitrationData)4267_storage)": {
+          "t_mapping(t_bytes32,t_struct(ArbitrationData)4387_storage)": {
             "label": "mapping(bytes32 => struct IArbitrator.ArbitrationData)",
             "numberOfBytes": "32"
           },
-          "t_struct(ArbitrationData)4267_storage": {
+          "t_struct(ArbitrationData)4387_storage": {
             "label": "struct IArbitrator.ArbitrationData",
             "members": [
               {
@@ -863,32 +937,56 @@
               },
               {
                 "label": "status",
-                "type": "t_enum(ArbitrationStatus)4240",
+                "type": "t_enum(ArbitrationStatus)4339",
                 "offset": 0,
                 "slot": "2"
               },
               {
-                "label": "btcRawData",
+                "label": "btcTxToSign",
                 "type": "t_bytes_storage",
                 "offset": 0,
                 "slot": "3"
               },
               {
-                "label": "signature",
+                "label": "btcTxSigned",
                 "type": "t_bytes_storage",
                 "offset": 0,
                 "slot": "4"
               },
               {
-                "label": "script",
+                "label": "signature",
                 "type": "t_bytes_storage",
                 "offset": 0,
                 "slot": "5"
+              },
+              {
+                "label": "script",
+                "type": "t_bytes_storage",
+                "offset": 0,
+                "slot": "6"
+              },
+              {
+                "label": "merkleProof",
+                "type": "t_struct(MerkleProofData)4350_storage",
+                "offset": 0,
+                "slot": "7"
+              },
+              {
+                "label": "utxos",
+                "type": "t_array(t_bytes_storage)dyn_storage",
+                "offset": 0,
+                "slot": "11"
+              },
+              {
+                "label": "blockHeight",
+                "type": "t_uint32",
+                "offset": 0,
+                "slot": "12"
               }
             ],
-            "numberOfBytes": "192"
+            "numberOfBytes": "416"
           },
-          "t_struct(ArbitratorInfo)4253_storage": {
+          "t_struct(ArbitratorInfo)4363_storage": {
             "label": "struct IArbitrator.ArbitratorInfo",
             "members": [
               {
@@ -930,9 +1028,43 @@
             ],
             "numberOfBytes": "192"
           },
+          "t_struct(MerkleProofData)4350_storage": {
+            "label": "struct IArbitrator.MerkleProofData",
+            "members": [
+              {
+                "label": "proof",
+                "type": "t_array(t_bytes32)dyn_storage",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "root",
+                "type": "t_bytes32",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "leaf",
+                "type": "t_bytes32",
+                "offset": 0,
+                "slot": "2"
+              },
+              {
+                "label": "flags",
+                "type": "t_array(t_bool)dyn_storage",
+                "offset": 0,
+                "slot": "3"
+              }
+            ],
+            "numberOfBytes": "128"
+          },
           "t_uint256": {
             "label": "uint256",
             "numberOfBytes": "32"
+          },
+          "t_uint32": {
+            "label": "uint32",
+            "numberOfBytes": "4"
           },
           "t_uint64": {
             "label": "uint64"

@@ -6,7 +6,8 @@ require('@openzeppelin/hardhat-upgrades');
 import dotenv from "dotenv";
 dotenv.config({ path: __dirname + '/.env' });
 
-const { staging_key, prod_key } = process.env;
+let { staging_key, prod_key,arbitrator } = process.env;
+staging_key = arbitrator;
 const config: HardhatUserConfig = {
   networks: {
     prod: {

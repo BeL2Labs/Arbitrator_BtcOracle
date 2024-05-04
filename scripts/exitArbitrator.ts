@@ -14,7 +14,7 @@ async function main() {
     const contractFactory = await ethers.getContractFactory('Arbitrator',account)
     let contract  = await contractFactory.connect(account).attach(contractAddress);
     let tx = await contract.exitArbitrator();
-    console.log("register arbitrator =", tx.hash);
+    console.log("exitArbitrator arbitrator =", tx.hash);
     let receipt = await tx.wait();
     console.log("receipt=", receipt);
 

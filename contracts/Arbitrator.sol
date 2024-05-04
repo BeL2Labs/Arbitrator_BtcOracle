@@ -107,14 +107,20 @@ contract Arbitrator is IArbitrator, OwnableUpgradeable {
         arbitrationData[_queryId].requestID = _queryId;
         arbitrationData[_queryId].requestTime  = block.timestamp;
         arbitrationData[_queryId].status = ArbitrationStatus.Pending;
-        arbitrationData[_queryId].btcRawData = _btcTxToSign;
+        arbitrationData[_queryId].btcTxToSign = _btcTxToSign;
         arbitrationData[_queryId].signature = _signature;
         arbitrationData[_queryId].script = _script;
 
         emit ArbitrationRequested(_btcTxToSign, _signature, _script, _queryId);
     }
 
-    function submitArbitrationResult(bytes32 _queryId, bytes calldata _signedBtcTx) external override {
+    function submitArbitrationResult(
+        bytes32 _queryId,
+        bytes memory _signedBtcTx,
+        bytes[] memory utxos,
+        uint32 blockHeight,
+        MerkleProofData calldata merkleProof
+    ) external override {
         ArbitratorInfo storage info = arbitratorInfo[msg.sender];
         require(info.registeredAt > 0, "Arbitrator not registered");
         require(block.timestamp <= info.registeredAt + info.commitPeriod, "Arbitrator commitment period ended");
@@ -123,8 +129,14 @@ contract Arbitrator is IArbitrator, OwnableUpgradeable {
         require(arbitrationData[_queryId].status == ArbitrationStatus.Pending, "NotPendingStatus");
         // TODO: 验证_signedBtcTx是否是有效的仲裁结果交易
 
-        arbitrationData[_queryId].btcRawData = _signedBtcTx;
+        arbitrationData[_queryId].btcTxSigned = _signedBtcTx;
         arbitrationData[_queryId].status = ArbitrationStatus.Completed;
+        arbitrationData[_queryId].merkleProof.root = merkleProof.root;
+        arbitrationData[_queryId].merkleProof.proof = merkleProof.proof;
+        arbitrationData[_queryId].merkleProof.leaf = merkleProof.leaf;
+        arbitrationData[_queryId].merkleProof.flags = merkleProof.flags;
+        arbitrationData[_queryId].utxos = utxos;
+        arbitrationData[_queryId].blockHeight = blockHeight;
         emit ArbitrationResultSubmitted(_signedBtcTx, _queryId);
     }
 
