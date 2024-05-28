@@ -29,10 +29,13 @@ contract Arbitrator is IArbitrator, OwnableUpgradeable {
     ///@custom:oz-upgrades-unsafe-allow constructor
     constructor() { _disableInitializers(); }
 
-    function initialize() initializer public virtual {
+    function initialize(
+        address _assetOracle,
+        address _registerWhiteListContract
+    ) initializer public virtual {
         __Ownable_init(msg.sender);
-        assetOracle = 0x5117b046517ffA18d4d9897090D0537fF62A844A;
-        registerWhiteListContract = 0x3909be751B1f3174102b29A75469B58E6DD1a311;
+        assetOracle = _assetOracle;
+        registerWhiteListContract = _registerWhiteListContract;
         arbitrationRequestDuration = 72 hours;
         minStakeAmount =  1000 * 1e18; //// 1000 USD
     }
@@ -41,11 +44,10 @@ contract Arbitrator is IArbitrator, OwnableUpgradeable {
         require(_commitPeriod > 0, "Commitment period must be greater than 0");
         require(tokenWhitelist[_token], "Token not whitelisted");
         require(arbitratorInfo[msg.sender].registeredAt == 0, "Arbitrator already registered");
-        //todo
-//        require(IRegisterWhiteList(registerWhiteListContract).checkRole(msg.sender), "NoPermission");
+        require(IRegisterWhiteList(registerWhiteListContract).checkRole(msg.sender), "NoPermission");
 
-        uint256 usdValue = getUsdValue(_token, _amount);
-        require(usdValue >= minStakeAmount, "Staked amount must be greater than minimum stake amount");
+//        uint256 usdValue = getUsdValue(_token, _amount);
+//        require(usdValue >= minStakeAmount, "Staked amount must be greater than minimum stake amount");
 
 
         uint256 allow = IERC20(_token).allowance(msg.sender, address(this));

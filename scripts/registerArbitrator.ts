@@ -17,6 +17,9 @@ async function main() {
     let _commitPeriod = 30 * 3600 * 24;
     let btcPublicKey = "0x0200493eb975eedf5d5d2f7f5458e790e8264576ec137df06c8f3f90c91b0a6f78";
     let usdt = "0x0daddd286487f3a03Ea9A1b693585fD46cdCcF9F";
+    if(chainID == 21) {
+        usdt = "0x892A0c0951091A8a072A4b652926D4A8875F9bcB";
+    }
 
     let amount = BigNumber.from("1000000000000000000");//10 * 1e18;
     amount = amount.mul(10);

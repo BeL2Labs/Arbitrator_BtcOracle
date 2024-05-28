@@ -14,6 +14,9 @@ async function main() {
     const contractFactory = await ethers.getContractFactory('Arbitrator',account)
     let contract  = await contractFactory.connect(account).attach(contractAddress);
     let usdt = "0x0daddd286487f3a03Ea9A1b693585fD46cdCcF9F";
+    if (chainID == 21) {
+        usdt = "0x892A0c0951091A8a072A4b652926D4A8875F9bcB";
+    }
 
     let tx = await contract.setTokenWhitelist(usdt, true);
     console.log("setTokenWhitelist =", tx.hash);

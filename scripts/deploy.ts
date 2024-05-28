@@ -9,8 +9,14 @@ async function main() {
   let signers = await ethers.getSigners()
   let deployer = signers[0]
   const factory = await ethers.getContractFactory("Arbitrator", deployer);
+
+  let assetOracle = "0x5117b046517ffA18d4d9897090D0537fF62A844A";
+  let registerWhiteListContract = "0x3909be751B1f3174102b29A75469B58E6DD1a311";
+
   let contract = await upgrades.deployProxy(factory,
       [
+        assetOracle,
+        registerWhiteListContract
       ],
       {
         initializer:  "initialize",
