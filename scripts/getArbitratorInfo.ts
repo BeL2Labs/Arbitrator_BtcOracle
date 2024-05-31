@@ -1,6 +1,8 @@
 // @ts-ignore
 import { network, ethers, upgrades, getChainId } from 'hardhat'
 import {readConfig} from "./helper";
+import {BigNumber} from "ethers";
+import {publicKeyCreate} from 'secp256k1';
 
 async function main() {
     let chainID = await getChainId();
@@ -13,12 +15,11 @@ async function main() {
     const contractFactory = await ethers.getContractFactory('Arbitrator',account)
     let contract  = await contractFactory.connect(account).attach(contractAddress);
 
-    let tx = await contract.setRegisterWhiteList("0x3909be751B1f3174102b29A75469B58E6DD1a311");
-    console.log(" setRegisterWhiteList =", tx.hash);
-    await tx.wait();
-    let submitter = await contract.registerWhiteListContract();
-    console.log("submitterAddress=", submitter);
+    let arbitratorPbk = await contract.getArbitratorPublicKey();
+    console.log("arbitratorPbk ", arbitratorPbk);
 
+    let getArbitratorInfo = await contract.getArbitratorInfo(account.address);
+    console.log("getArbitratorInfo ", getArbitratorInfo);
 }
 
 // We recommend this pattern to be able to use async/await everywhere

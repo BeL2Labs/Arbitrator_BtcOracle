@@ -7,7 +7,7 @@ import dotenv from "dotenv";
 dotenv.config({ path: __dirname + '/.env' });
 
 let { staging_key, prod_key,arbitrator } = process.env;
-// staging_key = arbitrator;
+staging_key = arbitrator;
 const config: HardhatUserConfig = {
   networks: {
     prod: {

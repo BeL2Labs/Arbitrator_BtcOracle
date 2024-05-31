@@ -15,8 +15,10 @@ contract Arbitrator is IArbitrator, OwnableUpgradeable {
     uint256 public arbitrationRequestDuration;
     uint256 public minStakeAmount;
     address public assetOracle;
+    //Only accounts within this contract can be registered as arbitrators
     address public registerWhiteListContract;
 
+    //Only accounts within this contract can apply for arbitration
     mapping(address => bool) public agreementContractWhitelist;
     mapping(address => bool) public tokenWhitelist;
 
@@ -46,9 +48,8 @@ contract Arbitrator is IArbitrator, OwnableUpgradeable {
         require(arbitratorInfo[msg.sender].registeredAt == 0, "Arbitrator already registered");
         require(IRegisterWhiteList(registerWhiteListContract).checkRole(msg.sender), "NoPermission");
 
-//        uint256 usdValue = getUsdValue(_token, _amount);
-//        require(usdValue >= minStakeAmount, "Staked amount must be greater than minimum stake amount");
-
+        uint256 usdValue = getUsdValue(_token, _amount);
+        require(usdValue >= minStakeAmount, "Staked amount must be greater than minimum stake amount");
 
         uint256 allow = IERC20(_token).allowance(msg.sender, address(this));
         require(allow >= _amount, "NoApprove");
