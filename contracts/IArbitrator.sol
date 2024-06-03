@@ -1,11 +1,11 @@
 // SPDX-License-Identifier: CC-BY-NC-4.0
 pragma solidity ^0.8.20;
+import "./interfaces/IZKPOrder.sol";
 /**
  * @title IArbitrator
  * @dev Interface for the arbitration contract, defining functions for arbitrator registration, submitting arbitration results, requesting arbitration, and more.
  */
 interface IArbitrator {
-    enum ArbitrationStatus { Pending, Completed }
     struct MerkleProofData {
         bytes32[] proof;
         bytes32 root;
@@ -24,7 +24,6 @@ interface IArbitrator {
     struct ArbitrationData {
         bytes32 requestID;
         uint256 requestTime;
-        ArbitrationStatus status;
         bytes btcTxToSign;
         bytes btcTxSigned;
         bytes signature;
@@ -32,6 +31,10 @@ interface IArbitrator {
         MerkleProofData merkleProof;
         bytes[] utxos;
         uint32 blockHeight;
+        bytes32 wTxId;
+        string prover;
+        uint256 lockBtcTx;
+        uint256 lockAmount;
     }
 
     /**
@@ -119,7 +122,21 @@ interface IArbitrator {
      * @param _queryId The unique identifier of the arbitration request.
      * @return The status of the arbitration request.
      */
-    function getArbitrationStatus(bytes32 _queryId) external view returns (ArbitrationStatus);
+    function getArbitrationStatus(bytes32 _queryId, string memory network) external view returns (ProofStatus);
+
+    function getArbitrationDetails(bytes32 _queryId, string memory network) external view returns (
+        bytes32,  //wtxid
+        Input[] memory,
+        Output[] memory,
+        bytes memory, //script
+        ProofStatus
+    );
+
+    function getProvingDetail(bytes32 _queryId, string memory network) external view returns (
+        bytes32, //wtxid
+        ProvingStatus,
+        string memory //proverAddress
+    );
 
     /**
      * @dev Emitted when a new arbitrator is registered.
@@ -181,6 +198,7 @@ interface IArbitrator {
     event SetAssetOracle(address indexed oracle);
 
     event SetRegisterWhiteList(address indexed whiteList);
+    event SetZkpOrder(address indexed zkpOrder);
 
 
     /**
@@ -190,4 +208,8 @@ interface IArbitrator {
     function setMinStakeAmount(uint256 newAmount) external;
 
     function setRegisterWhiteList(address whiteList) external;
+
+    function setZkpOrder(address zkpOrderAddress) external;
+
+    function getArbitrationData(bytes32 queryID) external view returns(ArbitrationData memory);
 }

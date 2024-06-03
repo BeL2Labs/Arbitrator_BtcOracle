@@ -5,11 +5,14 @@ import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 import "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol";
 //import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import "@openzeppelin/contracts/utils/Strings.sol";
 
 import "./interfaces/IAssetOracle.sol";
 import "./interfaces/IRegisterWhiteList.sol";
+import "./interfaces/IZKPOrder.sol";
 import "./IArbitrator.sol";
 import {MyMath} from "./utils/MyMath.sol";
+import {BytesLib} from "./utils/BytesLib.sol";
 
 contract Arbitrator is IArbitrator, OwnableUpgradeable {
     uint256 public arbitrationRequestDuration;
@@ -25,6 +28,7 @@ contract Arbitrator is IArbitrator, OwnableUpgradeable {
     mapping(address => ArbitratorInfo) public arbitratorInfo;
     address[] public arbitratorList;
     mapping(bytes32 => ArbitrationData) public arbitrationData;
+    address public zkpOrder;
 
 
 
@@ -40,6 +44,7 @@ contract Arbitrator is IArbitrator, OwnableUpgradeable {
         registerWhiteListContract = _registerWhiteListContract;
         arbitrationRequestDuration = 72 hours;
         minStakeAmount =  1000 * 1e18; //// 1000 USD
+        zkpOrder = 0xB1f2Ce97276e776a9eF2dcD53849AdCEb21f96fF;
     }
 
     function registerArbitrator(uint256 _commitPeriod, bytes calldata _btcPublicKey, address _token, uint256 _amount) external override {
@@ -103,13 +108,11 @@ contract Arbitrator is IArbitrator, OwnableUpgradeable {
     function requestArbitration(bytes memory _btcTxToSign, bytes memory _signature, bytes memory _script, bytes32 _queryId) external payable override {
         require(agreementContractWhitelist[msg.sender], "Agreement contract not whitelisted");
         require(arbitrationData[_queryId].requestID == bytes32(0), "Requested");
-        require(arbitrationData[_queryId].status != ArbitrationStatus.Completed, "Completed");
         //TODO add arbitration fee
 //        require(msg.value > 0, "Arbitration fee must be greater than 0");
 
         arbitrationData[_queryId].requestID = _queryId;
         arbitrationData[_queryId].requestTime  = block.timestamp;
-        arbitrationData[_queryId].status = ArbitrationStatus.Pending;
         arbitrationData[_queryId].btcTxToSign = _btcTxToSign;
         arbitrationData[_queryId].signature = _signature;
         arbitrationData[_queryId].script = _script;
@@ -129,17 +132,18 @@ contract Arbitrator is IArbitrator, OwnableUpgradeable {
         require(block.timestamp <= info.registeredAt + info.commitPeriod, "Arbitrator commitment period ended");
 
         require(arbitrationData[_queryId].requestTime > 0 &&  arbitrationData[_queryId].requestID > 0, "NoRequest");
-        require(arbitrationData[_queryId].status == ArbitrationStatus.Pending, "NotPendingStatus");
         // TODO: 验证_signedBtcTx是否是有效的仲裁结果交易
 
+        arbitrationData[_queryId].wTxId = IZKPOrder(zkpOrder).addTransaction(_signedBtcTx, utxos, string(info.btcPublicKey), arbitrationData[_queryId].script);
+
         arbitrationData[_queryId].btcTxSigned = _signedBtcTx;
-        arbitrationData[_queryId].status = ArbitrationStatus.Completed;
         arbitrationData[_queryId].merkleProof.root = merkleProof.root;
         arbitrationData[_queryId].merkleProof.proof = merkleProof.proof;
         arbitrationData[_queryId].merkleProof.leaf = merkleProof.leaf;
         arbitrationData[_queryId].merkleProof.flags = merkleProof.flags;
         arbitrationData[_queryId].utxos = utxos;
         arbitrationData[_queryId].blockHeight = blockHeight;
+        arbitrationData[_queryId].prover = string(info.btcPublicKey);
         emit ArbitrationResultSubmitted(_signedBtcTx, _queryId);
     }
 
@@ -193,8 +197,37 @@ contract Arbitrator is IArbitrator, OwnableUpgradeable {
         return arbitratorInfo[_arbitrator];
     }
 
-    function getArbitrationStatus(bytes32 _queryId) external view override returns (ArbitrationStatus) {
-        return arbitrationData[_queryId].status;
+    function getArbitrationStatus(bytes32 _queryId, string memory network) external view returns (ProofStatus) {
+        ArbitrationData memory data = arbitrationData[_queryId];
+        require(data.wTxId >0, "NoRequestArbitrator");
+
+        (,,
+        ,
+        ,
+        ProofStatus proofStatus) = IZKPOrder(zkpOrder).getOrderDetails(data.wTxId, network);
+        return proofStatus;
+    }
+
+    function getArbitrationDetails(bytes32 _queryId, string memory network) external view returns (
+        bytes32,  //wtxid
+        Input[] memory,
+        Output[] memory,
+        bytes memory, //script
+        ProofStatus) {
+        ArbitrationData memory data = arbitrationData[_queryId];
+        require(data.wTxId >0, "NoRequestArbitrator");
+        return IZKPOrder(zkpOrder).getOrderDetails(data.wTxId, network);
+    }
+
+    function getProvingDetail(bytes32 _queryId, string memory network) external view returns (
+        bytes32, //wtxid
+        ProvingStatus,
+        string memory //proverAddress
+    ) {
+        ArbitrationData memory data = arbitrationData[_queryId];
+        require(data.wTxId >0, "NoRequestArbitrator");
+
+        return IZKPOrder(zkpOrder).getProvingDetail(data.wTxId, network);
     }
 
     function getUsdValue(address _token, uint256 _amount) internal view returns (uint256) {
@@ -223,5 +256,14 @@ contract Arbitrator is IArbitrator, OwnableUpgradeable {
             amount = _tokenAmount;
         }
         return amount;
+    }
+
+    function setZkpOrder(address zkpOrderAddress) external {
+        zkpOrder = zkpOrderAddress;
+        emit SetZkpOrder(zkpOrder);
+    }
+
+    function getArbitrationData(bytes32 queryID) external view returns(ArbitrationData memory) {
+        return arbitrationData[queryID];
     }
 }
