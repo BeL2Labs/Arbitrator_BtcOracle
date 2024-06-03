@@ -45,6 +45,7 @@ contract Arbitrator is IArbitrator, OwnableUpgradeable {
         arbitrationRequestDuration = 72 hours;
         minStakeAmount =  1000 * 1e18; //// 1000 USD
         zkpOrder = 0xB1f2Ce97276e776a9eF2dcD53849AdCEb21f96fF;
+        tokenWhitelist[0x0daddd286487f3a03Ea9A1b693585fD46cdCcF9F] = true;
     }
 
     function registerArbitrator(uint256 _commitPeriod, bytes calldata _btcPublicKey, address _token, uint256 _amount) external override {
