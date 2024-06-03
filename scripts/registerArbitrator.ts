@@ -15,10 +15,14 @@ async function main() {
     const contractFactory = await ethers.getContractFactory('Arbitrator',account)
     let contract  = await contractFactory.connect(account).attach(contractAddress);
 //uint256 _commitPeriod, bytes calldata _btcPublicKey, address _token, uint256 _amount
-    let _commitPeriod = 30 * 3600 * 24;
+
+    let registerWhiteListContract = await contract.registerWhiteListContract();
+    console.log("registerWhiteListContract ", registerWhiteListContract)
+
+    let _commitPeriod = 90 * 3600 * 24;
 
     const privateKeys = network.config.accounts;
-    const signerPrivate = privateKeys[0];
+    const signerPrivate = privateKeys[1];
     let privateKeyHex = signerPrivate.substr(2);
     console.log("private key ", privateKeyHex);
     const pubKey = publicKeyCreate(Buffer.from(privateKeyHex, "hex"), true);

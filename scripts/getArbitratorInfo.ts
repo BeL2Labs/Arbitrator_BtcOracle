@@ -9,7 +9,7 @@ async function main() {
     console.log("chainID==", chainID)
 
     let accounts = await ethers.getSigners()
-    let account = accounts[0]
+    let account = accounts[1]
     console.log("account", account.address)
     let contractAddress = await readConfig(network.name,"ARBITRATOR");
     const contractFactory = await ethers.getContractFactory('Arbitrator',account)
