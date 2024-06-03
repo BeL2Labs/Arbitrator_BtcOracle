@@ -13,8 +13,14 @@ async function main() {
     let contractAddress = await readConfig(network.name,"ARBITRATOR");
     const contractFactory = await ethers.getContractFactory('Arbitrator',account)
     let contract  = await contractFactory.connect(account).attach(contractAddress);
-
-    let tx = await contract.setAgreementContractWhitelist("0x20c14ce780cDa71A0A030C9Ae731B38Cf87f44F4", true);
+    let whiteList = "";
+    if (network.name == "stage") {
+        whiteList = "0x98568A3abB586B92294cDb4AD5b03E560BCADb06";
+    }
+    if (network.name == "testnet") {
+        whiteList = "0x9b5f23a95A1627cd59791FA1950Dd1c9DEC41F69";
+    }
+    let tx = await contract.setAgreementContractWhitelist(whiteList, true);
     let receipt = await tx.wait();
     console.log("receipt=", receipt.logs);
 }

@@ -7,20 +7,19 @@ import dotenv from "dotenv";
 dotenv.config({ path: __dirname + '/.env' });
 
 let { staging_key, prod_key,arbitrator } = process.env;
-staging_key = arbitrator;
 const config: HardhatUserConfig = {
   networks: {
     prod: {
       url: "https://api.elastos.io/esc",
-      accounts: [...(prod_key ? [prod_key] : [])]
+      accounts: [...(prod_key ? [prod_key,arbitrator] : [])]
     },
     stage: {
       url: "https://api.elastos.io/esc",
-      accounts: [...(staging_key ? [staging_key] : [])]
+      accounts: [...(staging_key ? [staging_key, arbitrator] : [])]
     },
     testnet: {
       url: "https://api-testnet.elastos.io/esc",
-      accounts: [...(staging_key ? [staging_key] : [])]
+      accounts: [...(staging_key ? [staging_key, arbitrator] : [])]
     },
 
     hardhat: {

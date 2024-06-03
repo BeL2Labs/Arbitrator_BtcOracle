@@ -9,7 +9,8 @@ async function main() {
     console.log("chainID==", chainID)
 
     let accounts = await ethers.getSigners()
-    let account = accounts[0]
+    let account = accounts[1]
+    console.log("account", accounts[0].address)
     console.log("account", account.address)
     let contractAddress = await readConfig(network.name,"ARBITRATOR");
     const contractFactory = await ethers.getContractFactory('Arbitrator',account)
@@ -29,7 +30,7 @@ async function main() {
         usdt = "0x892A0c0951091A8a072A4b652926D4A8875F9bcB";
     }
 
-    publicKeyBytes = "0x03454e2be5c77729c986d692f023f25dc9b5b7887960bbf5176511d8a4cc3e38ed";
+    // publicKeyBytes = "0x03454e2be5c77729c986d692f023f25dc9b5b7887960bbf5176511d8a4cc3e38ed";
     console.log("public key ", publicKeyBytes.toString("hex"))
     let amount = BigNumber.from("1000000000000000000");
     amount = amount.mul(10);//10 * 1e18;

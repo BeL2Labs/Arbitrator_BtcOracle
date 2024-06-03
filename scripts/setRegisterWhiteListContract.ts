@@ -12,8 +12,11 @@ async function main() {
     let contractAddress = await readConfig(network.name,"ARBITRATOR");
     const contractFactory = await ethers.getContractFactory('Arbitrator',account)
     let contract  = await contractFactory.connect(account).attach(contractAddress);
-
-    let tx = await contract.setRegisterWhiteList("0x3909be751B1f3174102b29A75469B58E6DD1a311");
+    let whiteList = "0x3909be751B1f3174102b29A75469B58E6DD1a311"
+    if (network.name == "stage") {
+        whiteList = "0xF3748F86D901aDca1C4310F844206C17634B48d5";
+    }
+    let tx = await contract.setRegisterWhiteList(whiteList);
     console.log(" setRegisterWhiteList =", tx.hash);
     await tx.wait();
     let submitter = await contract.registerWhiteListContract();
