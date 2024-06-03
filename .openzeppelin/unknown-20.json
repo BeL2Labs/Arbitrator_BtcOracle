@@ -1,20 +1,20 @@
 {
   "manifestVersion": "3.2",
   "admin": {
-    "address": "0x117d96AfD7687cab77AC5fc6f56841508887286a",
-    "txHash": "0xd6fd23e7361f7783f7d6d98f91b6c9d7a877d226145fb4a33f319a7b9e991e5b"
+    "address": "0xbfA4EdE8e7A52b18328E7B817bB7d13B3e587c91",
+    "txHash": "0x9b93c7672cca770738f5d8e3ad9b4c44f6cb3492e88a5ddc7418256928019494"
   },
   "proxies": [
     {
-      "address": "0x32D45fa21B6efe0404911B0FE5aa3243D120Bc62",
-      "txHash": "0x1c4629ff1ee3c5e22215466f77bbc72c5385aaa4ce87de63596d3885d0fc24c8",
+      "address": "0xb136cF92EfE857911C4c7efcA1dE2424545b5186",
+      "txHash": "0x8145c2d9827df999ef800a6f16e601db21617e201b78a6f6b77265f25c72fd1c",
       "kind": "transparent"
     }
   ],
   "impls": {
-    "9d70bfb859993ca399f4c9dc25ccbaf8bf634605a0d3644fa856925e79fa309c": {
-      "address": "0x4060eb38749ED09628F3b08D8afcd659137204B7",
-      "txHash": "0x6ad66e668493128c77a73ab474faee6bd88b292cb6d7e69d8699eb5ff92b61f0",
+    "f90a934abb092a2b037c347d4ffa42ebc9c42682664478067192c975a6ad92b3": {
+      "address": "0x0b06e7520C83915AA2205C709196fa3fB6B0d85e",
+      "txHash": "0x8b50202337ddeb489fd1b74d7fc9b9a2448d09f8bd51004a0cbd7bc413674ba7",
       "layout": {
         "solcVersion": "0.8.20",
         "storage": [
@@ -24,7 +24,7 @@
             "slot": "0",
             "type": "t_uint256",
             "contract": "Arbitrator",
-            "src": "contracts/Arbitrator.sol:15"
+            "src": "contracts/Arbitrator.sol:18"
           },
           {
             "label": "minStakeAmount",
@@ -32,7 +32,7 @@
             "slot": "1",
             "type": "t_uint256",
             "contract": "Arbitrator",
-            "src": "contracts/Arbitrator.sol:16"
+            "src": "contracts/Arbitrator.sol:19"
           },
           {
             "label": "assetOracle",
@@ -40,7 +40,7 @@
             "slot": "2",
             "type": "t_address",
             "contract": "Arbitrator",
-            "src": "contracts/Arbitrator.sol:17"
+            "src": "contracts/Arbitrator.sol:20"
           },
           {
             "label": "registerWhiteListContract",
@@ -48,7 +48,7 @@
             "slot": "3",
             "type": "t_address",
             "contract": "Arbitrator",
-            "src": "contracts/Arbitrator.sol:18"
+            "src": "contracts/Arbitrator.sol:22"
           },
           {
             "label": "agreementContractWhitelist",
@@ -56,7 +56,7 @@
             "slot": "4",
             "type": "t_mapping(t_address,t_bool)",
             "contract": "Arbitrator",
-            "src": "contracts/Arbitrator.sol:20"
+            "src": "contracts/Arbitrator.sol:25"
           },
           {
             "label": "tokenWhitelist",
@@ -64,15 +64,15 @@
             "slot": "5",
             "type": "t_mapping(t_address,t_bool)",
             "contract": "Arbitrator",
-            "src": "contracts/Arbitrator.sol:21"
+            "src": "contracts/Arbitrator.sol:26"
           },
           {
             "label": "arbitratorInfo",
             "offset": 0,
             "slot": "6",
-            "type": "t_mapping(t_address,t_struct(ArbitratorInfo)4294_storage)",
+            "type": "t_mapping(t_address,t_struct(ArbitratorInfo)4879_storage)",
             "contract": "Arbitrator",
-            "src": "contracts/Arbitrator.sol:23"
+            "src": "contracts/Arbitrator.sol:28"
           },
           {
             "label": "arbitratorList",
@@ -80,791 +80,23 @@
             "slot": "7",
             "type": "t_array(t_address)dyn_storage",
             "contract": "Arbitrator",
-            "src": "contracts/Arbitrator.sol:24"
+            "src": "contracts/Arbitrator.sol:29"
           },
           {
             "label": "arbitrationData",
             "offset": 0,
             "slot": "8",
-            "type": "t_mapping(t_bytes32,t_struct(ArbitrationData)4310_storage)",
+            "type": "t_mapping(t_bytes32,t_struct(ArbitrationData)4908_storage)",
             "contract": "Arbitrator",
-            "src": "contracts/Arbitrator.sol:25"
-          }
-        ],
-        "types": {
-          "t_address": {
-            "label": "address",
-            "numberOfBytes": "20"
-          },
-          "t_array(t_address)dyn_storage": {
-            "label": "address[]",
-            "numberOfBytes": "32"
-          },
-          "t_bool": {
-            "label": "bool",
-            "numberOfBytes": "1"
-          },
-          "t_bytes32": {
-            "label": "bytes32",
-            "numberOfBytes": "32"
-          },
-          "t_bytes_storage": {
-            "label": "bytes",
-            "numberOfBytes": "32"
-          },
-          "t_enum(ArbitrationStatus)4281": {
-            "label": "enum IArbitrator.ArbitrationStatus",
-            "members": [
-              "Pending",
-              "Completed"
-            ],
-            "numberOfBytes": "1"
-          },
-          "t_mapping(t_address,t_bool)": {
-            "label": "mapping(address => bool)",
-            "numberOfBytes": "32"
-          },
-          "t_mapping(t_address,t_struct(ArbitratorInfo)4294_storage)": {
-            "label": "mapping(address => struct IArbitrator.ArbitratorInfo)",
-            "numberOfBytes": "32"
-          },
-          "t_mapping(t_bytes32,t_struct(ArbitrationData)4310_storage)": {
-            "label": "mapping(bytes32 => struct IArbitrator.ArbitrationData)",
-            "numberOfBytes": "32"
-          },
-          "t_struct(ArbitrationData)4310_storage": {
-            "label": "struct IArbitrator.ArbitrationData",
-            "members": [
-              {
-                "label": "requestID",
-                "type": "t_bytes32",
-                "offset": 0,
-                "slot": "0"
-              },
-              {
-                "label": "requestTime",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "1"
-              },
-              {
-                "label": "status",
-                "type": "t_enum(ArbitrationStatus)4281",
-                "offset": 0,
-                "slot": "2"
-              },
-              {
-                "label": "btcTxToSign",
-                "type": "t_bytes_storage",
-                "offset": 0,
-                "slot": "3"
-              },
-              {
-                "label": "btcTxSigned",
-                "type": "t_bytes_storage",
-                "offset": 0,
-                "slot": "4"
-              },
-              {
-                "label": "signature",
-                "type": "t_bytes_storage",
-                "offset": 0,
-                "slot": "5"
-              },
-              {
-                "label": "script",
-                "type": "t_bytes_storage",
-                "offset": 0,
-                "slot": "6"
-              }
-            ],
-            "numberOfBytes": "224"
-          },
-          "t_struct(ArbitratorInfo)4294_storage": {
-            "label": "struct IArbitrator.ArbitratorInfo",
-            "members": [
-              {
-                "label": "arbitrator",
-                "type": "t_address",
-                "offset": 0,
-                "slot": "0"
-              },
-              {
-                "label": "commitPeriod",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "1"
-              },
-              {
-                "label": "registeredAt",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "2"
-              },
-              {
-                "label": "btcPublicKey",
-                "type": "t_bytes_storage",
-                "offset": 0,
-                "slot": "3"
-              },
-              {
-                "label": "stakedToken",
-                "type": "t_address",
-                "offset": 0,
-                "slot": "4"
-              },
-              {
-                "label": "stakedAmount",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "5"
-              }
-            ],
-            "numberOfBytes": "192"
-          },
-          "t_uint256": {
-            "label": "uint256",
-            "numberOfBytes": "32"
-          },
-          "t_uint64": {
-            "label": "uint64"
-          }
-        },
-        "namespaces": {
-          "erc7201:openzeppelin.storage.Ownable": [
-            {
-              "contract": "OwnableUpgradeable",
-              "label": "_owner",
-              "type": "t_address",
-              "src": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:24"
-            }
-          ],
-          "erc7201:openzeppelin.storage.Initializable": [
-            {
-              "contract": "Initializable",
-              "label": "_initialized",
-              "type": "t_uint64",
-              "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:69"
-            },
-            {
-              "contract": "Initializable",
-              "label": "_initializing",
-              "type": "t_bool",
-              "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:73"
-            }
-          ]
-        }
-      }
-    },
-    "3502905ab4a4f27db7c4f2360152ccc70c7c9ccdf1234e5c785b65cabae9588b": {
-      "address": "0x44fE7279cAb50Eb70A4e277b97a936cc97B6Ce67",
-      "txHash": "0x6fab3729d8d9879fd117f4415d9a815e9566466978644946903c2a07cf3aba9c",
-      "layout": {
-        "solcVersion": "0.8.20",
-        "storage": [
-          {
-            "label": "arbitrationRequestDuration",
-            "offset": 0,
-            "slot": "0",
-            "type": "t_uint256",
-            "contract": "Arbitrator",
-            "src": "contracts/Arbitrator.sol:15"
+            "src": "contracts/Arbitrator.sol:30"
           },
           {
-            "label": "minStakeAmount",
+            "label": "zkpOrder",
             "offset": 0,
-            "slot": "1",
-            "type": "t_uint256",
-            "contract": "Arbitrator",
-            "src": "contracts/Arbitrator.sol:16"
-          },
-          {
-            "label": "assetOracle",
-            "offset": 0,
-            "slot": "2",
+            "slot": "9",
             "type": "t_address",
             "contract": "Arbitrator",
-            "src": "contracts/Arbitrator.sol:17"
-          },
-          {
-            "label": "registerWhiteListContract",
-            "offset": 0,
-            "slot": "3",
-            "type": "t_address",
-            "contract": "Arbitrator",
-            "src": "contracts/Arbitrator.sol:18"
-          },
-          {
-            "label": "agreementContractWhitelist",
-            "offset": 0,
-            "slot": "4",
-            "type": "t_mapping(t_address,t_bool)",
-            "contract": "Arbitrator",
-            "src": "contracts/Arbitrator.sol:20"
-          },
-          {
-            "label": "tokenWhitelist",
-            "offset": 0,
-            "slot": "5",
-            "type": "t_mapping(t_address,t_bool)",
-            "contract": "Arbitrator",
-            "src": "contracts/Arbitrator.sol:21"
-          },
-          {
-            "label": "arbitratorInfo",
-            "offset": 0,
-            "slot": "6",
-            "type": "t_mapping(t_address,t_struct(ArbitratorInfo)4258_storage)",
-            "contract": "Arbitrator",
-            "src": "contracts/Arbitrator.sol:23"
-          },
-          {
-            "label": "arbitratorList",
-            "offset": 0,
-            "slot": "7",
-            "type": "t_array(t_address)dyn_storage",
-            "contract": "Arbitrator",
-            "src": "contracts/Arbitrator.sol:24"
-          },
-          {
-            "label": "arbitrationData",
-            "offset": 0,
-            "slot": "8",
-            "type": "t_mapping(t_bytes32,t_struct(ArbitrationData)4274_storage)",
-            "contract": "Arbitrator",
-            "src": "contracts/Arbitrator.sol:25"
-          }
-        ],
-        "types": {
-          "t_address": {
-            "label": "address",
-            "numberOfBytes": "20"
-          },
-          "t_array(t_address)dyn_storage": {
-            "label": "address[]",
-            "numberOfBytes": "32"
-          },
-          "t_bool": {
-            "label": "bool",
-            "numberOfBytes": "1"
-          },
-          "t_bytes32": {
-            "label": "bytes32",
-            "numberOfBytes": "32"
-          },
-          "t_bytes_storage": {
-            "label": "bytes",
-            "numberOfBytes": "32"
-          },
-          "t_enum(ArbitrationStatus)4234": {
-            "label": "enum IArbitrator.ArbitrationStatus",
-            "members": [
-              "Pending",
-              "Completed"
-            ],
-            "numberOfBytes": "1"
-          },
-          "t_mapping(t_address,t_bool)": {
-            "label": "mapping(address => bool)",
-            "numberOfBytes": "32"
-          },
-          "t_mapping(t_address,t_struct(ArbitratorInfo)4258_storage)": {
-            "label": "mapping(address => struct IArbitrator.ArbitratorInfo)",
-            "numberOfBytes": "32"
-          },
-          "t_mapping(t_bytes32,t_struct(ArbitrationData)4274_storage)": {
-            "label": "mapping(bytes32 => struct IArbitrator.ArbitrationData)",
-            "numberOfBytes": "32"
-          },
-          "t_struct(ArbitrationData)4274_storage": {
-            "label": "struct IArbitrator.ArbitrationData",
-            "members": [
-              {
-                "label": "requestID",
-                "type": "t_bytes32",
-                "offset": 0,
-                "slot": "0"
-              },
-              {
-                "label": "requestTime",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "1"
-              },
-              {
-                "label": "status",
-                "type": "t_enum(ArbitrationStatus)4234",
-                "offset": 0,
-                "slot": "2"
-              },
-              {
-                "label": "btcTxToSign",
-                "type": "t_bytes_storage",
-                "offset": 0,
-                "slot": "3"
-              },
-              {
-                "label": "btcTxSigned",
-                "type": "t_bytes_storage",
-                "offset": 0,
-                "slot": "4"
-              },
-              {
-                "label": "signature",
-                "type": "t_bytes_storage",
-                "offset": 0,
-                "slot": "5"
-              },
-              {
-                "label": "script",
-                "type": "t_bytes_storage",
-                "offset": 0,
-                "slot": "6"
-              }
-            ],
-            "numberOfBytes": "224"
-          },
-          "t_struct(ArbitratorInfo)4258_storage": {
-            "label": "struct IArbitrator.ArbitratorInfo",
-            "members": [
-              {
-                "label": "arbitrator",
-                "type": "t_address",
-                "offset": 0,
-                "slot": "0"
-              },
-              {
-                "label": "commitPeriod",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "1"
-              },
-              {
-                "label": "registeredAt",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "2"
-              },
-              {
-                "label": "btcPublicKey",
-                "type": "t_bytes_storage",
-                "offset": 0,
-                "slot": "3"
-              },
-              {
-                "label": "stakedToken",
-                "type": "t_address",
-                "offset": 0,
-                "slot": "4"
-              },
-              {
-                "label": "stakedAmount",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "5"
-              }
-            ],
-            "numberOfBytes": "192"
-          },
-          "t_uint256": {
-            "label": "uint256",
-            "numberOfBytes": "32"
-          },
-          "t_uint64": {
-            "label": "uint64"
-          }
-        },
-        "namespaces": {
-          "erc7201:openzeppelin.storage.Ownable": [
-            {
-              "contract": "OwnableUpgradeable",
-              "label": "_owner",
-              "type": "t_address",
-              "src": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:24"
-            }
-          ],
-          "erc7201:openzeppelin.storage.Initializable": [
-            {
-              "contract": "Initializable",
-              "label": "_initialized",
-              "type": "t_uint64",
-              "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:69"
-            },
-            {
-              "contract": "Initializable",
-              "label": "_initializing",
-              "type": "t_bool",
-              "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:73"
-            }
-          ]
-        }
-      }
-    },
-    "773f34e0c7c3b576612df1b4a69897cd71577af128c5535a05fbc909adae72a9": {
-      "address": "0x9e2Cb6913d28a99720f22835a1BCC69341E96448",
-      "txHash": "0xb93b0ddf94caae381d545f42af1c235dd93167566e2f404128477c50c530d092",
-      "layout": {
-        "solcVersion": "0.8.20",
-        "storage": [
-          {
-            "label": "arbitrationRequestDuration",
-            "offset": 0,
-            "slot": "0",
-            "type": "t_uint256",
-            "contract": "Arbitrator",
-            "src": "contracts/Arbitrator.sol:15"
-          },
-          {
-            "label": "minStakeAmount",
-            "offset": 0,
-            "slot": "1",
-            "type": "t_uint256",
-            "contract": "Arbitrator",
-            "src": "contracts/Arbitrator.sol:16"
-          },
-          {
-            "label": "assetOracle",
-            "offset": 0,
-            "slot": "2",
-            "type": "t_address",
-            "contract": "Arbitrator",
-            "src": "contracts/Arbitrator.sol:17"
-          },
-          {
-            "label": "registerWhiteListContract",
-            "offset": 0,
-            "slot": "3",
-            "type": "t_address",
-            "contract": "Arbitrator",
-            "src": "contracts/Arbitrator.sol:18"
-          },
-          {
-            "label": "agreementContractWhitelist",
-            "offset": 0,
-            "slot": "4",
-            "type": "t_mapping(t_address,t_bool)",
-            "contract": "Arbitrator",
-            "src": "contracts/Arbitrator.sol:20"
-          },
-          {
-            "label": "tokenWhitelist",
-            "offset": 0,
-            "slot": "5",
-            "type": "t_mapping(t_address,t_bool)",
-            "contract": "Arbitrator",
-            "src": "contracts/Arbitrator.sol:21"
-          },
-          {
-            "label": "arbitratorInfo",
-            "offset": 0,
-            "slot": "6",
-            "type": "t_mapping(t_address,t_struct(ArbitratorInfo)4349_storage)",
-            "contract": "Arbitrator",
-            "src": "contracts/Arbitrator.sol:23"
-          },
-          {
-            "label": "arbitratorList",
-            "offset": 0,
-            "slot": "7",
-            "type": "t_array(t_address)dyn_storage",
-            "contract": "Arbitrator",
-            "src": "contracts/Arbitrator.sol:24"
-          },
-          {
-            "label": "arbitrationData",
-            "offset": 0,
-            "slot": "8",
-            "type": "t_mapping(t_bytes32,t_struct(ArbitrationData)4368_storage)",
-            "contract": "Arbitrator",
-            "src": "contracts/Arbitrator.sol:25"
-          }
-        ],
-        "types": {
-          "t_address": {
-            "label": "address",
-            "numberOfBytes": "20"
-          },
-          "t_array(t_address)dyn_storage": {
-            "label": "address[]",
-            "numberOfBytes": "32"
-          },
-          "t_array(t_bool)dyn_storage": {
-            "label": "bool[]",
-            "numberOfBytes": "32"
-          },
-          "t_array(t_bytes32)dyn_storage": {
-            "label": "bytes32[]",
-            "numberOfBytes": "32"
-          },
-          "t_bool": {
-            "label": "bool",
-            "numberOfBytes": "1"
-          },
-          "t_bytes32": {
-            "label": "bytes32",
-            "numberOfBytes": "32"
-          },
-          "t_bytes_storage": {
-            "label": "bytes",
-            "numberOfBytes": "32"
-          },
-          "t_enum(ArbitrationStatus)4325": {
-            "label": "enum IArbitrator.ArbitrationStatus",
-            "members": [
-              "Pending",
-              "Completed"
-            ],
-            "numberOfBytes": "1"
-          },
-          "t_mapping(t_address,t_bool)": {
-            "label": "mapping(address => bool)",
-            "numberOfBytes": "32"
-          },
-          "t_mapping(t_address,t_struct(ArbitratorInfo)4349_storage)": {
-            "label": "mapping(address => struct IArbitrator.ArbitratorInfo)",
-            "numberOfBytes": "32"
-          },
-          "t_mapping(t_bytes32,t_struct(ArbitrationData)4368_storage)": {
-            "label": "mapping(bytes32 => struct IArbitrator.ArbitrationData)",
-            "numberOfBytes": "32"
-          },
-          "t_struct(ArbitrationData)4368_storage": {
-            "label": "struct IArbitrator.ArbitrationData",
-            "members": [
-              {
-                "label": "requestID",
-                "type": "t_bytes32",
-                "offset": 0,
-                "slot": "0"
-              },
-              {
-                "label": "requestTime",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "1"
-              },
-              {
-                "label": "status",
-                "type": "t_enum(ArbitrationStatus)4325",
-                "offset": 0,
-                "slot": "2"
-              },
-              {
-                "label": "btcTxToSign",
-                "type": "t_bytes_storage",
-                "offset": 0,
-                "slot": "3"
-              },
-              {
-                "label": "btcTxSigned",
-                "type": "t_bytes_storage",
-                "offset": 0,
-                "slot": "4"
-              },
-              {
-                "label": "signature",
-                "type": "t_bytes_storage",
-                "offset": 0,
-                "slot": "5"
-              },
-              {
-                "label": "script",
-                "type": "t_bytes_storage",
-                "offset": 0,
-                "slot": "6"
-              },
-              {
-                "label": "merkleProof",
-                "type": "t_struct(MerkleProofData)4336_storage",
-                "offset": 0,
-                "slot": "7"
-              }
-            ],
-            "numberOfBytes": "352"
-          },
-          "t_struct(ArbitratorInfo)4349_storage": {
-            "label": "struct IArbitrator.ArbitratorInfo",
-            "members": [
-              {
-                "label": "arbitrator",
-                "type": "t_address",
-                "offset": 0,
-                "slot": "0"
-              },
-              {
-                "label": "commitPeriod",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "1"
-              },
-              {
-                "label": "registeredAt",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "2"
-              },
-              {
-                "label": "btcPublicKey",
-                "type": "t_bytes_storage",
-                "offset": 0,
-                "slot": "3"
-              },
-              {
-                "label": "stakedToken",
-                "type": "t_address",
-                "offset": 0,
-                "slot": "4"
-              },
-              {
-                "label": "stakedAmount",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "5"
-              }
-            ],
-            "numberOfBytes": "192"
-          },
-          "t_struct(MerkleProofData)4336_storage": {
-            "label": "struct IArbitrator.MerkleProofData",
-            "members": [
-              {
-                "label": "proof",
-                "type": "t_array(t_bytes32)dyn_storage",
-                "offset": 0,
-                "slot": "0"
-              },
-              {
-                "label": "root",
-                "type": "t_bytes32",
-                "offset": 0,
-                "slot": "1"
-              },
-              {
-                "label": "leaf",
-                "type": "t_bytes32",
-                "offset": 0,
-                "slot": "2"
-              },
-              {
-                "label": "flags",
-                "type": "t_array(t_bool)dyn_storage",
-                "offset": 0,
-                "slot": "3"
-              }
-            ],
-            "numberOfBytes": "128"
-          },
-          "t_uint256": {
-            "label": "uint256",
-            "numberOfBytes": "32"
-          },
-          "t_uint64": {
-            "label": "uint64"
-          }
-        },
-        "namespaces": {
-          "erc7201:openzeppelin.storage.Ownable": [
-            {
-              "contract": "OwnableUpgradeable",
-              "label": "_owner",
-              "type": "t_address",
-              "src": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:24"
-            }
-          ],
-          "erc7201:openzeppelin.storage.Initializable": [
-            {
-              "contract": "Initializable",
-              "label": "_initialized",
-              "type": "t_uint64",
-              "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:69"
-            },
-            {
-              "contract": "Initializable",
-              "label": "_initializing",
-              "type": "t_bool",
-              "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:73"
-            }
-          ]
-        }
-      }
-    },
-    "cf3a6368d2eed5d2240f352a89edfcc6f0248364f6b479734f48462de7384323": {
-      "address": "0x97C0Ba3c27840A809ce3f4bBB7AbA45A9Dd9CD05",
-      "txHash": "0x4caf20a97ebb30251cfb4d9687dc1d75141c745da08a7b66f6951ae3b29dc83a",
-      "layout": {
-        "solcVersion": "0.8.20",
-        "storage": [
-          {
-            "label": "arbitrationRequestDuration",
-            "offset": 0,
-            "slot": "0",
-            "type": "t_uint256",
-            "contract": "Arbitrator",
-            "src": "contracts/Arbitrator.sol:15"
-          },
-          {
-            "label": "minStakeAmount",
-            "offset": 0,
-            "slot": "1",
-            "type": "t_uint256",
-            "contract": "Arbitrator",
-            "src": "contracts/Arbitrator.sol:16"
-          },
-          {
-            "label": "assetOracle",
-            "offset": 0,
-            "slot": "2",
-            "type": "t_address",
-            "contract": "Arbitrator",
-            "src": "contracts/Arbitrator.sol:17"
-          },
-          {
-            "label": "registerWhiteListContract",
-            "offset": 0,
-            "slot": "3",
-            "type": "t_address",
-            "contract": "Arbitrator",
-            "src": "contracts/Arbitrator.sol:18"
-          },
-          {
-            "label": "agreementContractWhitelist",
-            "offset": 0,
-            "slot": "4",
-            "type": "t_mapping(t_address,t_bool)",
-            "contract": "Arbitrator",
-            "src": "contracts/Arbitrator.sol:20"
-          },
-          {
-            "label": "tokenWhitelist",
-            "offset": 0,
-            "slot": "5",
-            "type": "t_mapping(t_address,t_bool)",
-            "contract": "Arbitrator",
-            "src": "contracts/Arbitrator.sol:21"
-          },
-          {
-            "label": "arbitratorInfo",
-            "offset": 0,
-            "slot": "6",
-            "type": "t_mapping(t_address,t_struct(ArbitratorInfo)4363_storage)",
-            "contract": "Arbitrator",
-            "src": "contracts/Arbitrator.sol:23"
-          },
-          {
-            "label": "arbitratorList",
-            "offset": 0,
-            "slot": "7",
-            "type": "t_array(t_address)dyn_storage",
-            "contract": "Arbitrator",
-            "src": "contracts/Arbitrator.sol:24"
-          },
-          {
-            "label": "arbitrationData",
-            "offset": 0,
-            "slot": "8",
-            "type": "t_mapping(t_bytes32,t_struct(ArbitrationData)4387_storage)",
-            "contract": "Arbitrator",
-            "src": "contracts/Arbitrator.sol:25"
+            "src": "contracts/Arbitrator.sol:31"
           }
         ],
         "types": {
@@ -900,27 +132,23 @@
             "label": "bytes",
             "numberOfBytes": "32"
           },
-          "t_enum(ArbitrationStatus)4339": {
-            "label": "enum IArbitrator.ArbitrationStatus",
-            "members": [
-              "Pending",
-              "Completed"
-            ],
-            "numberOfBytes": "1"
-          },
           "t_mapping(t_address,t_bool)": {
             "label": "mapping(address => bool)",
             "numberOfBytes": "32"
           },
-          "t_mapping(t_address,t_struct(ArbitratorInfo)4363_storage)": {
+          "t_mapping(t_address,t_struct(ArbitratorInfo)4879_storage)": {
             "label": "mapping(address => struct IArbitrator.ArbitratorInfo)",
             "numberOfBytes": "32"
           },
-          "t_mapping(t_bytes32,t_struct(ArbitrationData)4387_storage)": {
+          "t_mapping(t_bytes32,t_struct(ArbitrationData)4908_storage)": {
             "label": "mapping(bytes32 => struct IArbitrator.ArbitrationData)",
             "numberOfBytes": "32"
           },
-          "t_struct(ArbitrationData)4387_storage": {
+          "t_string_storage": {
+            "label": "string",
+            "numberOfBytes": "32"
+          },
+          "t_struct(ArbitrationData)4908_storage": {
             "label": "struct IArbitrator.ArbitrationData",
             "members": [
               {
@@ -936,57 +164,75 @@
                 "slot": "1"
               },
               {
-                "label": "status",
-                "type": "t_enum(ArbitrationStatus)4339",
-                "offset": 0,
-                "slot": "2"
-              },
-              {
                 "label": "btcTxToSign",
                 "type": "t_bytes_storage",
                 "offset": 0,
-                "slot": "3"
+                "slot": "2"
               },
               {
                 "label": "btcTxSigned",
                 "type": "t_bytes_storage",
                 "offset": 0,
-                "slot": "4"
+                "slot": "3"
               },
               {
                 "label": "signature",
                 "type": "t_bytes_storage",
                 "offset": 0,
-                "slot": "5"
+                "slot": "4"
               },
               {
                 "label": "script",
                 "type": "t_bytes_storage",
                 "offset": 0,
-                "slot": "6"
+                "slot": "5"
               },
               {
                 "label": "merkleProof",
-                "type": "t_struct(MerkleProofData)4350_storage",
+                "type": "t_struct(MerkleProofData)4866_storage",
                 "offset": 0,
-                "slot": "7"
+                "slot": "6"
               },
               {
                 "label": "utxos",
                 "type": "t_array(t_bytes_storage)dyn_storage",
                 "offset": 0,
-                "slot": "11"
+                "slot": "10"
               },
               {
                 "label": "blockHeight",
                 "type": "t_uint32",
                 "offset": 0,
+                "slot": "11"
+              },
+              {
+                "label": "wTxId",
+                "type": "t_bytes32",
+                "offset": 0,
                 "slot": "12"
+              },
+              {
+                "label": "prover",
+                "type": "t_string_storage",
+                "offset": 0,
+                "slot": "13"
+              },
+              {
+                "label": "lockBtcTx",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "14"
+              },
+              {
+                "label": "lockAmount",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "15"
               }
             ],
-            "numberOfBytes": "416"
+            "numberOfBytes": "512"
           },
-          "t_struct(ArbitratorInfo)4363_storage": {
+          "t_struct(ArbitratorInfo)4879_storage": {
             "label": "struct IArbitrator.ArbitratorInfo",
             "members": [
               {
@@ -1028,931 +274,7 @@
             ],
             "numberOfBytes": "192"
           },
-          "t_struct(MerkleProofData)4350_storage": {
-            "label": "struct IArbitrator.MerkleProofData",
-            "members": [
-              {
-                "label": "proof",
-                "type": "t_array(t_bytes32)dyn_storage",
-                "offset": 0,
-                "slot": "0"
-              },
-              {
-                "label": "root",
-                "type": "t_bytes32",
-                "offset": 0,
-                "slot": "1"
-              },
-              {
-                "label": "leaf",
-                "type": "t_bytes32",
-                "offset": 0,
-                "slot": "2"
-              },
-              {
-                "label": "flags",
-                "type": "t_array(t_bool)dyn_storage",
-                "offset": 0,
-                "slot": "3"
-              }
-            ],
-            "numberOfBytes": "128"
-          },
-          "t_uint256": {
-            "label": "uint256",
-            "numberOfBytes": "32"
-          },
-          "t_uint32": {
-            "label": "uint32",
-            "numberOfBytes": "4"
-          },
-          "t_uint64": {
-            "label": "uint64"
-          }
-        },
-        "namespaces": {
-          "erc7201:openzeppelin.storage.Ownable": [
-            {
-              "contract": "OwnableUpgradeable",
-              "label": "_owner",
-              "type": "t_address",
-              "src": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:24"
-            }
-          ],
-          "erc7201:openzeppelin.storage.Initializable": [
-            {
-              "contract": "Initializable",
-              "label": "_initialized",
-              "type": "t_uint64",
-              "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:69"
-            },
-            {
-              "contract": "Initializable",
-              "label": "_initializing",
-              "type": "t_bool",
-              "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:73"
-            }
-          ]
-        }
-      }
-    },
-    "603d7cf8850a83102de447f8507db67299a8414e704613c8fcc78306633de726": {
-      "address": "0x5f9416dE9d1F7Ac720fCa0210257dac073334199",
-      "txHash": "0xc92d4cad073b32807898f48cf930a5dca3043f3d9927e613efca380cb0c56306",
-      "layout": {
-        "solcVersion": "0.8.20",
-        "storage": [
-          {
-            "label": "arbitrationRequestDuration",
-            "offset": 0,
-            "slot": "0",
-            "type": "t_uint256",
-            "contract": "Arbitrator",
-            "src": "contracts/Arbitrator.sol:15"
-          },
-          {
-            "label": "minStakeAmount",
-            "offset": 0,
-            "slot": "1",
-            "type": "t_uint256",
-            "contract": "Arbitrator",
-            "src": "contracts/Arbitrator.sol:16"
-          },
-          {
-            "label": "assetOracle",
-            "offset": 0,
-            "slot": "2",
-            "type": "t_address",
-            "contract": "Arbitrator",
-            "src": "contracts/Arbitrator.sol:17"
-          },
-          {
-            "label": "registerWhiteListContract",
-            "offset": 0,
-            "slot": "3",
-            "type": "t_address",
-            "contract": "Arbitrator",
-            "src": "contracts/Arbitrator.sol:18"
-          },
-          {
-            "label": "agreementContractWhitelist",
-            "offset": 0,
-            "slot": "4",
-            "type": "t_mapping(t_address,t_bool)",
-            "contract": "Arbitrator",
-            "src": "contracts/Arbitrator.sol:20"
-          },
-          {
-            "label": "tokenWhitelist",
-            "offset": 0,
-            "slot": "5",
-            "type": "t_mapping(t_address,t_bool)",
-            "contract": "Arbitrator",
-            "src": "contracts/Arbitrator.sol:21"
-          },
-          {
-            "label": "arbitratorInfo",
-            "offset": 0,
-            "slot": "6",
-            "type": "t_mapping(t_address,t_struct(ArbitratorInfo)4352_storage)",
-            "contract": "Arbitrator",
-            "src": "contracts/Arbitrator.sol:23"
-          },
-          {
-            "label": "arbitratorList",
-            "offset": 0,
-            "slot": "7",
-            "type": "t_array(t_address)dyn_storage",
-            "contract": "Arbitrator",
-            "src": "contracts/Arbitrator.sol:24"
-          },
-          {
-            "label": "arbitrationData",
-            "offset": 0,
-            "slot": "8",
-            "type": "t_mapping(t_bytes32,t_struct(ArbitrationData)4376_storage)",
-            "contract": "Arbitrator",
-            "src": "contracts/Arbitrator.sol:25"
-          }
-        ],
-        "types": {
-          "t_address": {
-            "label": "address",
-            "numberOfBytes": "20"
-          },
-          "t_array(t_address)dyn_storage": {
-            "label": "address[]",
-            "numberOfBytes": "32"
-          },
-          "t_array(t_bool)dyn_storage": {
-            "label": "bool[]",
-            "numberOfBytes": "32"
-          },
-          "t_array(t_bytes32)dyn_storage": {
-            "label": "bytes32[]",
-            "numberOfBytes": "32"
-          },
-          "t_array(t_bytes_storage)dyn_storage": {
-            "label": "bytes[]",
-            "numberOfBytes": "32"
-          },
-          "t_bool": {
-            "label": "bool",
-            "numberOfBytes": "1"
-          },
-          "t_bytes32": {
-            "label": "bytes32",
-            "numberOfBytes": "32"
-          },
-          "t_bytes_storage": {
-            "label": "bytes",
-            "numberOfBytes": "32"
-          },
-          "t_enum(ArbitrationStatus)4328": {
-            "label": "enum IArbitrator.ArbitrationStatus",
-            "members": [
-              "Pending",
-              "Completed"
-            ],
-            "numberOfBytes": "1"
-          },
-          "t_mapping(t_address,t_bool)": {
-            "label": "mapping(address => bool)",
-            "numberOfBytes": "32"
-          },
-          "t_mapping(t_address,t_struct(ArbitratorInfo)4352_storage)": {
-            "label": "mapping(address => struct IArbitrator.ArbitratorInfo)",
-            "numberOfBytes": "32"
-          },
-          "t_mapping(t_bytes32,t_struct(ArbitrationData)4376_storage)": {
-            "label": "mapping(bytes32 => struct IArbitrator.ArbitrationData)",
-            "numberOfBytes": "32"
-          },
-          "t_struct(ArbitrationData)4376_storage": {
-            "label": "struct IArbitrator.ArbitrationData",
-            "members": [
-              {
-                "label": "requestID",
-                "type": "t_bytes32",
-                "offset": 0,
-                "slot": "0"
-              },
-              {
-                "label": "requestTime",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "1"
-              },
-              {
-                "label": "status",
-                "type": "t_enum(ArbitrationStatus)4328",
-                "offset": 0,
-                "slot": "2"
-              },
-              {
-                "label": "btcTxToSign",
-                "type": "t_bytes_storage",
-                "offset": 0,
-                "slot": "3"
-              },
-              {
-                "label": "btcTxSigned",
-                "type": "t_bytes_storage",
-                "offset": 0,
-                "slot": "4"
-              },
-              {
-                "label": "signature",
-                "type": "t_bytes_storage",
-                "offset": 0,
-                "slot": "5"
-              },
-              {
-                "label": "script",
-                "type": "t_bytes_storage",
-                "offset": 0,
-                "slot": "6"
-              },
-              {
-                "label": "merkleProof",
-                "type": "t_struct(MerkleProofData)4339_storage",
-                "offset": 0,
-                "slot": "7"
-              },
-              {
-                "label": "utxos",
-                "type": "t_array(t_bytes_storage)dyn_storage",
-                "offset": 0,
-                "slot": "11"
-              },
-              {
-                "label": "blockHeight",
-                "type": "t_uint32",
-                "offset": 0,
-                "slot": "12"
-              }
-            ],
-            "numberOfBytes": "416"
-          },
-          "t_struct(ArbitratorInfo)4352_storage": {
-            "label": "struct IArbitrator.ArbitratorInfo",
-            "members": [
-              {
-                "label": "arbitrator",
-                "type": "t_address",
-                "offset": 0,
-                "slot": "0"
-              },
-              {
-                "label": "commitPeriod",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "1"
-              },
-              {
-                "label": "registeredAt",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "2"
-              },
-              {
-                "label": "btcPublicKey",
-                "type": "t_bytes_storage",
-                "offset": 0,
-                "slot": "3"
-              },
-              {
-                "label": "stakedToken",
-                "type": "t_address",
-                "offset": 0,
-                "slot": "4"
-              },
-              {
-                "label": "stakedAmount",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "5"
-              }
-            ],
-            "numberOfBytes": "192"
-          },
-          "t_struct(MerkleProofData)4339_storage": {
-            "label": "struct IArbitrator.MerkleProofData",
-            "members": [
-              {
-                "label": "proof",
-                "type": "t_array(t_bytes32)dyn_storage",
-                "offset": 0,
-                "slot": "0"
-              },
-              {
-                "label": "root",
-                "type": "t_bytes32",
-                "offset": 0,
-                "slot": "1"
-              },
-              {
-                "label": "leaf",
-                "type": "t_bytes32",
-                "offset": 0,
-                "slot": "2"
-              },
-              {
-                "label": "flags",
-                "type": "t_array(t_bool)dyn_storage",
-                "offset": 0,
-                "slot": "3"
-              }
-            ],
-            "numberOfBytes": "128"
-          },
-          "t_uint256": {
-            "label": "uint256",
-            "numberOfBytes": "32"
-          },
-          "t_uint32": {
-            "label": "uint32",
-            "numberOfBytes": "4"
-          },
-          "t_uint64": {
-            "label": "uint64"
-          }
-        },
-        "namespaces": {
-          "erc7201:openzeppelin.storage.Ownable": [
-            {
-              "contract": "OwnableUpgradeable",
-              "label": "_owner",
-              "type": "t_address",
-              "src": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:24"
-            }
-          ],
-          "erc7201:openzeppelin.storage.Initializable": [
-            {
-              "contract": "Initializable",
-              "label": "_initialized",
-              "type": "t_uint64",
-              "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:69"
-            },
-            {
-              "contract": "Initializable",
-              "label": "_initializing",
-              "type": "t_bool",
-              "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:73"
-            }
-          ]
-        }
-      }
-    },
-    "69f417ba85d9c92ce90317ab209d006d6ed4269262155fba28bb894153feb373": {
-      "address": "0xaaAa0D4c22b72055750E448a1CEe9bD047640930",
-      "txHash": "0xd0173910dd2f4bf365a34210e2a99d59400e04d057feb022d4c0695c80174b32",
-      "layout": {
-        "solcVersion": "0.8.20",
-        "storage": [
-          {
-            "label": "arbitrationRequestDuration",
-            "offset": 0,
-            "slot": "0",
-            "type": "t_uint256",
-            "contract": "Arbitrator",
-            "src": "contracts/Arbitrator.sol:15"
-          },
-          {
-            "label": "minStakeAmount",
-            "offset": 0,
-            "slot": "1",
-            "type": "t_uint256",
-            "contract": "Arbitrator",
-            "src": "contracts/Arbitrator.sol:16"
-          },
-          {
-            "label": "assetOracle",
-            "offset": 0,
-            "slot": "2",
-            "type": "t_address",
-            "contract": "Arbitrator",
-            "src": "contracts/Arbitrator.sol:17"
-          },
-          {
-            "label": "registerWhiteListContract",
-            "offset": 0,
-            "slot": "3",
-            "type": "t_address",
-            "contract": "Arbitrator",
-            "src": "contracts/Arbitrator.sol:18"
-          },
-          {
-            "label": "agreementContractWhitelist",
-            "offset": 0,
-            "slot": "4",
-            "type": "t_mapping(t_address,t_bool)",
-            "contract": "Arbitrator",
-            "src": "contracts/Arbitrator.sol:20"
-          },
-          {
-            "label": "tokenWhitelist",
-            "offset": 0,
-            "slot": "5",
-            "type": "t_mapping(t_address,t_bool)",
-            "contract": "Arbitrator",
-            "src": "contracts/Arbitrator.sol:21"
-          },
-          {
-            "label": "arbitratorInfo",
-            "offset": 0,
-            "slot": "6",
-            "type": "t_mapping(t_address,t_struct(ArbitratorInfo)4300_storage)",
-            "contract": "Arbitrator",
-            "src": "contracts/Arbitrator.sol:23"
-          },
-          {
-            "label": "arbitratorList",
-            "offset": 0,
-            "slot": "7",
-            "type": "t_array(t_address)dyn_storage",
-            "contract": "Arbitrator",
-            "src": "contracts/Arbitrator.sol:24"
-          },
-          {
-            "label": "arbitrationData",
-            "offset": 0,
-            "slot": "8",
-            "type": "t_mapping(t_bytes32,t_struct(ArbitrationData)4324_storage)",
-            "contract": "Arbitrator",
-            "src": "contracts/Arbitrator.sol:25"
-          }
-        ],
-        "types": {
-          "t_address": {
-            "label": "address",
-            "numberOfBytes": "20"
-          },
-          "t_array(t_address)dyn_storage": {
-            "label": "address[]",
-            "numberOfBytes": "32"
-          },
-          "t_array(t_bool)dyn_storage": {
-            "label": "bool[]",
-            "numberOfBytes": "32"
-          },
-          "t_array(t_bytes32)dyn_storage": {
-            "label": "bytes32[]",
-            "numberOfBytes": "32"
-          },
-          "t_array(t_bytes_storage)dyn_storage": {
-            "label": "bytes[]",
-            "numberOfBytes": "32"
-          },
-          "t_bool": {
-            "label": "bool",
-            "numberOfBytes": "1"
-          },
-          "t_bytes32": {
-            "label": "bytes32",
-            "numberOfBytes": "32"
-          },
-          "t_bytes_storage": {
-            "label": "bytes",
-            "numberOfBytes": "32"
-          },
-          "t_enum(ArbitrationStatus)4276": {
-            "label": "enum IArbitrator.ArbitrationStatus",
-            "members": [
-              "Pending",
-              "Completed"
-            ],
-            "numberOfBytes": "1"
-          },
-          "t_mapping(t_address,t_bool)": {
-            "label": "mapping(address => bool)",
-            "numberOfBytes": "32"
-          },
-          "t_mapping(t_address,t_struct(ArbitratorInfo)4300_storage)": {
-            "label": "mapping(address => struct IArbitrator.ArbitratorInfo)",
-            "numberOfBytes": "32"
-          },
-          "t_mapping(t_bytes32,t_struct(ArbitrationData)4324_storage)": {
-            "label": "mapping(bytes32 => struct IArbitrator.ArbitrationData)",
-            "numberOfBytes": "32"
-          },
-          "t_struct(ArbitrationData)4324_storage": {
-            "label": "struct IArbitrator.ArbitrationData",
-            "members": [
-              {
-                "label": "requestID",
-                "type": "t_bytes32",
-                "offset": 0,
-                "slot": "0"
-              },
-              {
-                "label": "requestTime",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "1"
-              },
-              {
-                "label": "status",
-                "type": "t_enum(ArbitrationStatus)4276",
-                "offset": 0,
-                "slot": "2"
-              },
-              {
-                "label": "btcTxToSign",
-                "type": "t_bytes_storage",
-                "offset": 0,
-                "slot": "3"
-              },
-              {
-                "label": "btcTxSigned",
-                "type": "t_bytes_storage",
-                "offset": 0,
-                "slot": "4"
-              },
-              {
-                "label": "signature",
-                "type": "t_bytes_storage",
-                "offset": 0,
-                "slot": "5"
-              },
-              {
-                "label": "script",
-                "type": "t_bytes_storage",
-                "offset": 0,
-                "slot": "6"
-              },
-              {
-                "label": "merkleProof",
-                "type": "t_struct(MerkleProofData)4287_storage",
-                "offset": 0,
-                "slot": "7"
-              },
-              {
-                "label": "utxos",
-                "type": "t_array(t_bytes_storage)dyn_storage",
-                "offset": 0,
-                "slot": "11"
-              },
-              {
-                "label": "blockHeight",
-                "type": "t_uint32",
-                "offset": 0,
-                "slot": "12"
-              }
-            ],
-            "numberOfBytes": "416"
-          },
-          "t_struct(ArbitratorInfo)4300_storage": {
-            "label": "struct IArbitrator.ArbitratorInfo",
-            "members": [
-              {
-                "label": "arbitrator",
-                "type": "t_address",
-                "offset": 0,
-                "slot": "0"
-              },
-              {
-                "label": "commitPeriod",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "1"
-              },
-              {
-                "label": "registeredAt",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "2"
-              },
-              {
-                "label": "btcPublicKey",
-                "type": "t_bytes_storage",
-                "offset": 0,
-                "slot": "3"
-              },
-              {
-                "label": "stakedToken",
-                "type": "t_address",
-                "offset": 0,
-                "slot": "4"
-              },
-              {
-                "label": "stakedAmount",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "5"
-              }
-            ],
-            "numberOfBytes": "192"
-          },
-          "t_struct(MerkleProofData)4287_storage": {
-            "label": "struct IArbitrator.MerkleProofData",
-            "members": [
-              {
-                "label": "proof",
-                "type": "t_array(t_bytes32)dyn_storage",
-                "offset": 0,
-                "slot": "0"
-              },
-              {
-                "label": "root",
-                "type": "t_bytes32",
-                "offset": 0,
-                "slot": "1"
-              },
-              {
-                "label": "leaf",
-                "type": "t_bytes32",
-                "offset": 0,
-                "slot": "2"
-              },
-              {
-                "label": "flags",
-                "type": "t_array(t_bool)dyn_storage",
-                "offset": 0,
-                "slot": "3"
-              }
-            ],
-            "numberOfBytes": "128"
-          },
-          "t_uint256": {
-            "label": "uint256",
-            "numberOfBytes": "32"
-          },
-          "t_uint32": {
-            "label": "uint32",
-            "numberOfBytes": "4"
-          },
-          "t_uint64": {
-            "label": "uint64"
-          }
-        },
-        "namespaces": {
-          "erc7201:openzeppelin.storage.Ownable": [
-            {
-              "contract": "OwnableUpgradeable",
-              "label": "_owner",
-              "type": "t_address",
-              "src": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:24"
-            }
-          ],
-          "erc7201:openzeppelin.storage.Initializable": [
-            {
-              "contract": "Initializable",
-              "label": "_initialized",
-              "type": "t_uint64",
-              "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:69"
-            },
-            {
-              "contract": "Initializable",
-              "label": "_initializing",
-              "type": "t_bool",
-              "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:73"
-            }
-          ]
-        }
-      }
-    },
-    "f3e13bdddfac6e82052d155d91b481d71429bc301ab2f4e25721b2813813f9fb": {
-      "address": "0x98affa2E7b935d10d29500f59fE34A8861042f93",
-      "txHash": "0xd8a1e601f080fa7dfc7422e7387591cd18c7dca3ae8de33267dbe6ceee3c8edd",
-      "layout": {
-        "solcVersion": "0.8.20",
-        "storage": [
-          {
-            "label": "arbitrationRequestDuration",
-            "offset": 0,
-            "slot": "0",
-            "type": "t_uint256",
-            "contract": "Arbitrator",
-            "src": "contracts/Arbitrator.sol:15"
-          },
-          {
-            "label": "minStakeAmount",
-            "offset": 0,
-            "slot": "1",
-            "type": "t_uint256",
-            "contract": "Arbitrator",
-            "src": "contracts/Arbitrator.sol:16"
-          },
-          {
-            "label": "assetOracle",
-            "offset": 0,
-            "slot": "2",
-            "type": "t_address",
-            "contract": "Arbitrator",
-            "src": "contracts/Arbitrator.sol:17"
-          },
-          {
-            "label": "registerWhiteListContract",
-            "offset": 0,
-            "slot": "3",
-            "type": "t_address",
-            "contract": "Arbitrator",
-            "src": "contracts/Arbitrator.sol:18"
-          },
-          {
-            "label": "agreementContractWhitelist",
-            "offset": 0,
-            "slot": "4",
-            "type": "t_mapping(t_address,t_bool)",
-            "contract": "Arbitrator",
-            "src": "contracts/Arbitrator.sol:20"
-          },
-          {
-            "label": "tokenWhitelist",
-            "offset": 0,
-            "slot": "5",
-            "type": "t_mapping(t_address,t_bool)",
-            "contract": "Arbitrator",
-            "src": "contracts/Arbitrator.sol:21"
-          },
-          {
-            "label": "arbitratorInfo",
-            "offset": 0,
-            "slot": "6",
-            "type": "t_mapping(t_address,t_struct(ArbitratorInfo)4364_storage)",
-            "contract": "Arbitrator",
-            "src": "contracts/Arbitrator.sol:23"
-          },
-          {
-            "label": "arbitratorList",
-            "offset": 0,
-            "slot": "7",
-            "type": "t_array(t_address)dyn_storage",
-            "contract": "Arbitrator",
-            "src": "contracts/Arbitrator.sol:24"
-          },
-          {
-            "label": "arbitrationData",
-            "offset": 0,
-            "slot": "8",
-            "type": "t_mapping(t_bytes32,t_struct(ArbitrationData)4388_storage)",
-            "contract": "Arbitrator",
-            "src": "contracts/Arbitrator.sol:25"
-          }
-        ],
-        "types": {
-          "t_address": {
-            "label": "address",
-            "numberOfBytes": "20"
-          },
-          "t_array(t_address)dyn_storage": {
-            "label": "address[]",
-            "numberOfBytes": "32"
-          },
-          "t_array(t_bool)dyn_storage": {
-            "label": "bool[]",
-            "numberOfBytes": "32"
-          },
-          "t_array(t_bytes32)dyn_storage": {
-            "label": "bytes32[]",
-            "numberOfBytes": "32"
-          },
-          "t_array(t_bytes_storage)dyn_storage": {
-            "label": "bytes[]",
-            "numberOfBytes": "32"
-          },
-          "t_bool": {
-            "label": "bool",
-            "numberOfBytes": "1"
-          },
-          "t_bytes32": {
-            "label": "bytes32",
-            "numberOfBytes": "32"
-          },
-          "t_bytes_storage": {
-            "label": "bytes",
-            "numberOfBytes": "32"
-          },
-          "t_enum(ArbitrationStatus)4340": {
-            "label": "enum IArbitrator.ArbitrationStatus",
-            "members": [
-              "Pending",
-              "Completed"
-            ],
-            "numberOfBytes": "1"
-          },
-          "t_mapping(t_address,t_bool)": {
-            "label": "mapping(address => bool)",
-            "numberOfBytes": "32"
-          },
-          "t_mapping(t_address,t_struct(ArbitratorInfo)4364_storage)": {
-            "label": "mapping(address => struct IArbitrator.ArbitratorInfo)",
-            "numberOfBytes": "32"
-          },
-          "t_mapping(t_bytes32,t_struct(ArbitrationData)4388_storage)": {
-            "label": "mapping(bytes32 => struct IArbitrator.ArbitrationData)",
-            "numberOfBytes": "32"
-          },
-          "t_struct(ArbitrationData)4388_storage": {
-            "label": "struct IArbitrator.ArbitrationData",
-            "members": [
-              {
-                "label": "requestID",
-                "type": "t_bytes32",
-                "offset": 0,
-                "slot": "0"
-              },
-              {
-                "label": "requestTime",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "1"
-              },
-              {
-                "label": "status",
-                "type": "t_enum(ArbitrationStatus)4340",
-                "offset": 0,
-                "slot": "2"
-              },
-              {
-                "label": "btcTxToSign",
-                "type": "t_bytes_storage",
-                "offset": 0,
-                "slot": "3"
-              },
-              {
-                "label": "btcTxSigned",
-                "type": "t_bytes_storage",
-                "offset": 0,
-                "slot": "4"
-              },
-              {
-                "label": "signature",
-                "type": "t_bytes_storage",
-                "offset": 0,
-                "slot": "5"
-              },
-              {
-                "label": "script",
-                "type": "t_bytes_storage",
-                "offset": 0,
-                "slot": "6"
-              },
-              {
-                "label": "merkleProof",
-                "type": "t_struct(MerkleProofData)4351_storage",
-                "offset": 0,
-                "slot": "7"
-              },
-              {
-                "label": "utxos",
-                "type": "t_array(t_bytes_storage)dyn_storage",
-                "offset": 0,
-                "slot": "11"
-              },
-              {
-                "label": "blockHeight",
-                "type": "t_uint32",
-                "offset": 0,
-                "slot": "12"
-              }
-            ],
-            "numberOfBytes": "416"
-          },
-          "t_struct(ArbitratorInfo)4364_storage": {
-            "label": "struct IArbitrator.ArbitratorInfo",
-            "members": [
-              {
-                "label": "arbitrator",
-                "type": "t_address",
-                "offset": 0,
-                "slot": "0"
-              },
-              {
-                "label": "commitPeriod",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "1"
-              },
-              {
-                "label": "registeredAt",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "2"
-              },
-              {
-                "label": "btcPublicKey",
-                "type": "t_bytes_storage",
-                "offset": 0,
-                "slot": "3"
-              },
-              {
-                "label": "stakedToken",
-                "type": "t_address",
-                "offset": 0,
-                "slot": "4"
-              },
-              {
-                "label": "stakedAmount",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "5"
-              }
-            ],
-            "numberOfBytes": "192"
-          },
-          "t_struct(MerkleProofData)4351_storage": {
+          "t_struct(MerkleProofData)4866_storage": {
             "label": "struct IArbitrator.MerkleProofData",
             "members": [
               {
