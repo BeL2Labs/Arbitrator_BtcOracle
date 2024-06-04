@@ -37,15 +37,17 @@ contract Arbitrator is IArbitrator, OwnableUpgradeable {
 
     function initialize(
         address _assetOracle,
-        address _registerWhiteListContract
+        address _registerWhiteListContract,
+        address _zkpOrder,
+        address _initToken
     ) initializer public virtual {
         __Ownable_init(msg.sender);
         assetOracle = _assetOracle;
         registerWhiteListContract = _registerWhiteListContract;
         arbitrationRequestDuration = 72 hours;
         minStakeAmount =  1000 * 1e18; //// 1000 USD
-        zkpOrder = 0xB1f2Ce97276e776a9eF2dcD53849AdCEb21f96fF;
-        tokenWhitelist[0x0daddd286487f3a03Ea9A1b693585fD46cdCcF9F] = true;
+        zkpOrder = _zkpOrder;
+        tokenWhitelist[_initToken] = true;
     }
 
     function registerArbitrator(uint256 _commitPeriod, bytes calldata _btcPublicKey, address _token, uint256 _amount) external override {
