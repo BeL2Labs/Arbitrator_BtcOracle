@@ -15,6 +15,11 @@ async function main() {
     console.log("contractAddress ", contractAddress);
 
     const contractFactory = await ethers.getContractFactory("Arbitrator");
+
+    let oldContract  = await contractFactory.connect(deployer).attach(contractAddress);
+    let owner = await oldContract.owner();
+    console.log("owener== ", owner);
+
     const newContract = await upgrades.upgradeProxy(contractAddress, contractFactory);
 
     const contract = await newContract.deployed();

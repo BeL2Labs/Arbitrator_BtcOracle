@@ -202,8 +202,9 @@ contract Arbitrator is IArbitrator, OwnableUpgradeable {
 
     function getArbitrationStatus(bytes32 _queryId, string memory network) external view returns (ProofStatus) {
         ArbitrationData memory data = arbitrationData[_queryId];
-        require(data.wTxId >0, "NoRequestArbitrator");
-
+        if(data.wTxId <= 0) {
+            return ProofStatus.toBeVerified;
+        }
         (,,
         ,
         ,
