@@ -108,7 +108,8 @@ contract Arbitrator is IArbitrator, OwnableUpgradeable {
         emit ArbitratorExited(msg.sender, stakedToken, stakedAmount);
     }
 
-    function requestArbitration(bytes memory _btcTxToSign, bytes memory _signature, bytes memory _script, bytes32 _queryId) external payable override {
+    function requestArbitration(bytes memory _btcTxToSign, bytes memory _signature, bytes memory _script, bytes32 _queryId,
+        bool zkpNeedScript) external payable override {
         require(agreementContractWhitelist[msg.sender], "Agreement contract not whitelisted");
         require(arbitrationData[_queryId].requestID == bytes32(0), "Requested");
         //TODO add arbitration fee
@@ -119,6 +120,7 @@ contract Arbitrator is IArbitrator, OwnableUpgradeable {
         arbitrationData[_queryId].btcTxToSign = _btcTxToSign;
         arbitrationData[_queryId].signature = _signature;
         arbitrationData[_queryId].script = _script;
+        arbitrationData[_queryId].zkpNeedScript = zkpNeedScript;
 
         emit ArbitrationRequested(_btcTxToSign, _signature, _script, _queryId);
     }
@@ -136,8 +138,11 @@ contract Arbitrator is IArbitrator, OwnableUpgradeable {
 
         require(arbitrationData[_queryId].requestTime > 0 &&  arbitrationData[_queryId].requestID > 0, "NoRequest");
         // TODO: 验证_signedBtcTx是否是有效的仲裁结果交易
-
-        arbitrationData[_queryId].wTxId = IZKPOrder(zkpOrder).addTransaction(_signedBtcTx, utxos, string(info.btcPublicKey), arbitrationData[_queryId].script);
+        bytes memory script = "";
+        if(arbitrationData[_queryId].zkpNeedScript) {
+            script = arbitrationData[_queryId].script;
+        }
+        arbitrationData[_queryId].wTxId = IZKPOrder(zkpOrder).addTransaction(_signedBtcTx, utxos, string(info.btcPublicKey), script);
 
         arbitrationData[_queryId].btcTxSigned = _signedBtcTx;
         arbitrationData[_queryId].merkleProof.root = merkleProof.root;

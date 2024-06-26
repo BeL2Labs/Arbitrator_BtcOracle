@@ -35,6 +35,7 @@ interface IArbitrator {
         string prover;
         uint256 lockBtcTx;
         uint256 lockAmount;
+        bool zkpNeedScript;
     }
 
     /**
@@ -73,9 +74,13 @@ interface IArbitrator {
     /**
      * @dev Requests arbitration.
      * @param _btcTxToSign The Bitcoin transaction to be signed by the arbitrator.
+     * @param _signature The BTC transaction signature
+     * @param _script The BTC script
      * @param _queryId The unique identifier of the arbitration request.
+     * @param zkpNeedScript ZkpOrder is need to pass script
      */
-    function requestArbitration(bytes memory _btcTxToSign, bytes memory _signature, bytes memory _script, bytes32 _queryId) external payable;
+    function requestArbitration(bytes memory _btcTxToSign, bytes memory _signature, bytes memory _script,
+        bytes32 _queryId, bool zkpNeedScript) external payable;
 
     /**
      * @dev Reports misbehaving arbitrators.
