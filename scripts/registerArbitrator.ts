@@ -26,15 +26,15 @@ async function main() {
     let privateKeyHex = signerPrivate.substr(2);
     console.log("private key ", privateKeyHex);
     const pubKey = publicKeyCreate(Buffer.from(privateKeyHex, "hex"), true);
-    let publicKeyBytes = Buffer.from(pubKey, 'hex');
-
+    let publicKeyBytes = Buffer.from(pubKey).toString("hex");
+    publicKeyBytes = "0x" + publicKeyBytes;
+    console.log("pubkey=", pubKey, " publicKeyBytes", publicKeyBytes);
     let usdt = "0x0daddd286487f3a03Ea9A1b693585fD46cdCcF9F";
     if(chainID == 21) {
         usdt = "0x892A0c0951091A8a072A4b652926D4A8875F9bcB";
     }
 
     // publicKeyBytes = "0x03454e2be5c77729c986d692f023f25dc9b5b7887960bbf5176511d8a4cc3e38ed";
-    console.log("public key ", publicKeyBytes.toString("hex"))
     let amount = BigNumber.from("1000000000000000000");
     amount = amount.mul(10);//10 * 1e18;
     let tx = await contract.registerArbitrator(_commitPeriod, publicKeyBytes, usdt, amount);
